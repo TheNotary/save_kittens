@@ -1,2 +1,19 @@
-%h1 Pages#home
-%p Find me in app/views/pages/home.html.haml
+%h1 The Internet Needs Your Help!
+
+%img#sad_cat{src:"/images/Sad-Cat-1_s.jpg", width:265, height:179}
+
+.explain
+  %p
+    Cats are about to be banned from the internet
+    by a bunch of people who don't know how the internet works!
+
+  %h4
+    Do Something Quick!
+
+  %ul
+    %li Sign the petition (500pts)
+    %li Leave a voicemail with your congress persons (1,000pts)
+    %li Link this page to everyone you know (10,000pts!)
+
+  .signature-form
+    = render '/signatures/form'
