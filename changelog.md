@@ -1,10 +1,10 @@
 ## 0.1.x
   - Email:
-    * 
+    *
 
 
 
-## 0.0.x 
+## 0.0.x
 
 
   - Page counter (ahoy?)
@@ -18,6 +18,5 @@ Currently:
 
 Finished:
 
-  - Signature Form 
+  - Signature Form: name, email, subscribe to our list, and zip code, state
   - Landing page HTML
-

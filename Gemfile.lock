@@ -40,8 +40,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.9.1.1)
+    diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.5.2)
+    factory_girl (4.5.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.5.0)
+      factory_girl (~> 4.5.0)
+      railties (>= 3.0.0)
     fastercsv (1.5.5)
     haml (4.0.6)
       tilt
@@ -101,6 +107,23 @@ GEM
     rake (10.4.2)
     rdoc (4.2.0)
       json (~> 1.4)
+    rspec-core (3.2.2)
+      rspec-support (~> 3.2.0)
+    rspec-expectations (3.2.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-mocks (3.2.1)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.2.0)
+    rspec-rails (3.2.1)
+      actionpack (>= 3.0, < 4.3)
+      activesupport (>= 3.0, < 4.3)
+      railties (>= 3.0, < 4.3)
+      rspec-core (~> 3.2.0)
+      rspec-expectations (~> 3.2.0)
+      rspec-mocks (~> 3.2.0)
+      rspec-support (~> 3.2.0)
+    rspec-support (3.2.2)
     ruby_parser (3.6.5)
       sexp_processor (~> 4.1)
     sass (3.2.19)
@@ -142,12 +165,14 @@ PLATFORMS
 DEPENDENCIES
   area
   coffee-rails (~> 4.0.0)
+  factory_girl_rails
   haml-rails
   jbuilder (~> 2.0)
   pry
   rails (= 4.1.12)
   rails-assets-bootstrap!
   rails-assets-jquery-ujs!
+  rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   spring
