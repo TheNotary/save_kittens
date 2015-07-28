@@ -16,4 +16,17 @@
     %li Link this page to everyone you know (10,000pts!)
 
   .signature-form
+    %h4 Sign Now!
     = render '/signatures/form'
+
+  .signature-stats
+    %h4 Did you know...
+    %p
+      We've had
+      %span#signatureCount= pluralize(@signature_count, "signature")
+      so far.
+    %p The top three most committed states are...
+    %ul
+      %li= @first_state
+      %li= @second_state
+      %li= @third_state
