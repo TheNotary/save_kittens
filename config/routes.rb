@@ -6,5 +6,5 @@ Rails.application.routes.draw do
 
   get 'data/fresh_data'
 
-  resources :signatures
+  resources :signatures, :only => [:create]
 end
