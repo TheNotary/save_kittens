@@ -1,4 +1,11 @@
+## 0.1.x
+  - Email:
+    * 
+
+
+
 ## 0.0.x 
+
 
   - Page counter (ahoy?)
     - refresh every 2 seconds?  Now use Faye and do it live!  =D
