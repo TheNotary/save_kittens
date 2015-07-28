@@ -2,10 +2,10 @@ class PagesController < ApplicationController
   def home
     @signature = Signature.new
     @signature_count = Signature.count
-
-    @first_state = Signature.first_state
-    @second_state = Signature.second_state
-    @third_state = Signature.third_state
+    @t = Signature.top_three_states
+    @first_state = @t[0]
+    @second_state = @t[1]
+    @third_state = @t[2]
   end
 
   def about

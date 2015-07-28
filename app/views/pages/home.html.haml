@@ -21,12 +21,20 @@
 
   .signature-stats
     %h4 Did you know...
-    %p
-      We've had
-      %span#signatureCount= pluralize(@signature_count, "signature")
-      so far.
-    %p The top three most committed states are...
-    %ul
-      %li= @first_state
-      %li= @second_state
-      %li= @third_state
+    .sig-count
+      %p
+        We've had
+        %span#signatureCount= pluralize(@signature_count, "signature")
+        so far.
+        #{"Be the first!" if @signature_count == 0}
+    -unless @t.count == 0
+      .top-states
+        %p
+          The top
+          =number_to_human @t.count
+          most committed
+          = "state".pluralize(@t.count)
+          #{@t.count == 1 ? "is" : "are"}...
+        %ul
+          - @t.each do |state|
+            %li=state
