@@ -1,0 +1,29 @@
+%h1 Listing signatures
+
+%table
+  %thead
+    %tr
+      %th Name
+      %th Email
+      %th Zip
+      %th State
+      %th Subscriber
+      %th
+      %th
+      %th
+
+  %tbody
+    - @signatures.each do |signature|
+      %tr
+        %td= signature.name
+        %td= signature.email
+        %td= signature.zip
+        %td= signature.state
+        %td= signature.subscriber
+        %td= link_to 'Show', signature
+        %td= link_to 'Edit', edit_signature_path(signature)
+        %td= link_to 'Destroy', signature, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Signature', new_signature_path

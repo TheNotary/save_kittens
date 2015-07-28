@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @signature.name
+%p
+  %b Email:
+  = @signature.email
+%p
+  %b Zip:
+  = @signature.zip
+%p
+  %b State:
+  = @signature.state
+%p
+  %b Subscriber:
+  = @signature.subscriber
+
+= link_to 'Edit', edit_signature_path(@signature)
+\|
+= link_to 'Back', signatures_path
