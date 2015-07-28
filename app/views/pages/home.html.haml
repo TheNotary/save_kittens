@@ -24,17 +24,19 @@
     .sig-count
       %p
         We've had
-        %span#signatureCount= pluralize(@signature_count, "signature")
+        %span.signatureCount= @signature_count
+        %span.signature-plural signatures
+        %span.signature-sigular signature
         so far.
-        #{"Be the first!" if @signature_count == 0}
-    -unless @t.count == 0
-      .top-states
-        %p
-          The top
-          =number_to_human @t.count
-          most committed
-          = "state".pluralize(@t.count)
-          #{@t.count == 1 ? "is" : "are"}...
-        %ul
-          - @t.each do |state|
-            %li=state
+        %span.beTheFirst #{"Be the first!" if @signature_count == 0}
+
+    .top-states
+      %p
+        The top
+        %span.topStatesCount=number_to_human @t.count
+        most committed
+        = "state".pluralize(@t.count)
+        #{@t.count == 1 ? "is" : "are"}...
+      %ul#top-states-list
+        - @t.each do |state|
+          %li=state

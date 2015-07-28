@@ -4,5 +4,7 @@ Rails.application.routes.draw do
 
   get 'pages/about'
 
+  get 'data/fresh_data'
+
   resources :signatures
 end

@@ -6,6 +6,11 @@ class Signature < ActiveRecord::Base
     update_clients
   end
 
+  def self.to_json
+    { signatureCount: self.count,
+      topThreeStates: self.top_three_states }.to_json
+  end
+
   # sends a signal to all clients indcating Signature.count and the
   # top_three_states
   def update_clients

@@ -1,0 +1,108 @@
+var PageUI = function (signatureCount, topThreeStates) {
+  this.lastSignatureCount = parseInt(signatureCount);
+  this.topThreeStates = topThreeStates;
+
+  this.init = function() {
+    var data = { signatureCount: this.lastSignatureCount,
+                 topThreeStates: gon.topThreeStates };
+
+
+    updateGuiWithData(data);
+
+    this.beginPollingForData();
+  };
+
+  this.beginPollingForData = function() {
+    setInterval(function(){
+      console.log(pageUI.lastSignatureCount);
+      //console.log(gon.signatureCount);
+      pageUI.checkForNewData();
+    }, 2000);
+  };
+
+  this.checkForNewData = function() {
+
+    // request data from /fresh_data
+    $.ajax({url: "/data/fresh_data", success: function(result){
+      if (result.signatureCount != pageUI.lastSignatureCount) {
+        console.log("UI update needed.  Last sig Count: " + pageUI.lastSignatureCount + "\n data: " + result.signatureCount);
+        pageUI.lastSignatureCount = parseInt(result.signatureCount);
+        updateGuiWithData(result);
+      }
+      else{
+        //console.log("UI UPdate not needed.  Last sig Count: " + pageUI.lastSignatureCount);
+      }
+
+    }});
+  };
+
+  var updateGuiWithData = function(data) {
+    tailorSigCount(data);
+    tailorTopStates(data);
+  };
+
+
+
+  var tailorTopStates = function(data) {
+    // set the number of top states
+    $(".topStatesCount").html(data.topThreeStates.length);
+
+    populateTopStatesList(data);
+
+    showHideTopStatesDependingOnSignatureCount(data);
+  };
+
+  var populateTopStatesList = function(data) {
+    $("#top-states-list").html("");
+    data.topThreeStates.forEach(function(state){
+      var elem = "<li>" + state + "</li>";
+      $("#top-states-list").append(elem);
+    });
+  };
+
+  var showHideTopStatesDependingOnSignatureCount = function(data) {
+    if (data.topThreeStates.length != 0){
+      $(".top-states").show();
+    }
+    else{
+      $(".top-states").hide();
+    }
+  };
+
+  var tailorSigCount = function(data) {
+    // update integer signatureCount
+    $(".signatureCount").html(data.signatureCount);
+
+    showHideBeTheFirstDependingOnSignatureCount(data);
+
+    pluralizeSignatureStatements(data);
+  };
+
+  var showHideBeTheFirstDependingOnSignatureCount = function(data) {
+    // remove "be the first" statement
+    if(data.signatureCount == 0)
+      $(".beTheFirst").show();
+    else
+      $(".beTheFirst").hide();
+  };
+
+  var pluralizeSignatureStatements = function(data) {
+    if (data.signatureCount == 1){
+      $(".signature-plural").hide();
+      $(".signature-singular").show();
+    }
+    else{
+      $(".signature-plural").show();
+      $(".signature-singular").hide();
+    }
+  };
+
+
+};
+
+
+// set 2 second timeout to pull down new data
+
+window.pageUI = new PageUI(gon.signatureCount);
+
+pageUI.init();
