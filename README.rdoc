@@ -1,28 +1,14 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+== Deployment instructions
 
-Things you may want to cover:
+On production server /root/.rails_secrets has the secret key, and this file is loaded upon ssh login via ~/.bashrc
 
-* Ruby version
+The app forces ssl, run two instances of thin, one ssl mode on port 443, and the other non-ssl on port 80.  The non-ssl connection will be upgraded.
 
-* System dependencies
+Don't forget to precompile the assets.  Due to memory limits, you'll need to enable the swapfile, https://www.digitalocean.com/community/tutorials/how-to-add-swap-on-ubuntu-12-04
 
-* Configuration
+    RAILS_ENV=production rake assets:precompile
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+    RAILS_ENV=production thin start -p 80 -P /tmp/non_ssl_pid -d
+    RAILS_ENV=production thin start -p 443 --ssl -d
