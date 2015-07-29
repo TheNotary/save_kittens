@@ -4,7 +4,7 @@ var PageUI = function (signatureCount, topThreeStates) {
 
   this.init = function() {
     var data = { signatureCount: this.lastSignatureCount,
-                 topThreeStates: gon.topThreeStates };
+                 topThreeStates: this.topThreeStates };
 
 
     updateGuiWithData(data);
@@ -105,6 +105,6 @@ var PageUI = function (signatureCount, topThreeStates) {
 };
 
 
-window.pageUI = new PageUI(gon.signatureCount);
+window.pageUI = new PageUI(gon.signatureCount, gon.topThreeStates);
 
 pageUI.init();

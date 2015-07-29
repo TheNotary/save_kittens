@@ -27,6 +27,8 @@ gem 'pry', group: :development
 gem 'spring',        group: :development
 
 
+gem 'capybara'
+gem 'poltergeist'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
 

@@ -10,9 +10,12 @@
   - Handle the thank_you as a modal
   - Validations: email, zipcode
   - Validate uniqueness of email, change thankyou to "You already signed successfully."
+  - Signing should be an ajax function
 
 
 Currently:
+
+  - Add some functional tests
 
 
 
