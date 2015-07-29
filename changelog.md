@@ -10,13 +10,17 @@
 ## 0.0.x
 
   - Show off by using Faye instead of polling =D
+  - Validations: email, zipcode
+  - Handle the thank_you as a modal
+  - Validate uniqueness of email, change thankyou to "You already signed successfully."
+
   
   
 
 
 Currently:
 
-  - Stick a theme to it
+  - BUG: emergency fixed the thank_you to render a tiny bit nicer, though should become a modal I think...
   
 
 Finished:
@@ -26,3 +30,4 @@ Finished:
   - Stats for page counter:  Show top 3 states contributing signatures
   - refresh stats every 2 seconds
   - Landing page HTML
+  - Stick a theme to it

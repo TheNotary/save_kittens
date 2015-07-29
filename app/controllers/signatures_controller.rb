@@ -28,7 +28,7 @@ class SignaturesController < ApplicationController
 
     respond_to do |format|
       if @signature.save
-        format.html { redirect_to @signature, notice: 'Signature was successfully created.' }
+        format.html { redirect_to '/thank_you', notice: 'Signature was successfully created.' }
         format.json { render :show, status: :created, location: @signature }
       else
         format.html { render :new }
