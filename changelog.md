@@ -24,7 +24,8 @@
 
 Currently:
 
-
+  - Learn node.js or express node, and replace 2 second polling with websocket
+    connections
 
 
 Finished:
