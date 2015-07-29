@@ -24,13 +24,13 @@
 
 Currently:
 
-  - Validate uniqueness of email, change thankyou to "You already signed successfully."
-
-  - Validations: email, zipcode
+  - validate email presence
+  - validate name presence
 
 
 Finished:
-
+  - Validate uniqueness of email, change thankyou to "You already signed successfully."
+  - Validations: email, zipcode
   - Update social media cards
   - Update payload on social media icons
   - BUG:  pluralization of "the top 2 most committed state is"

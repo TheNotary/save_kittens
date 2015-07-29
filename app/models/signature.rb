@@ -1,5 +1,7 @@
 class Signature < ActiveRecord::Base
-  validates :email, uniqueness: { message: "The email provided has already signed the petition" }
+  validates :email, presence: true, uniqueness: { message: "The email provided has already signed the petition" }
+  validates :name, presence: true
+  validates :zip, presence: true
 
   before_save :setup_state
 
