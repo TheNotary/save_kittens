@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728153431) do
+ActiveRecord::Schema.define(version: 20150729204202) do
 
   create_table "signatures", force: true do |t|
     t.string   "name"
@@ -22,5 +22,7 @@ ActiveRecord::Schema.define(version: 20150728153431) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "signatures", ["email"], name: "index_signatures_on_email", unique: true
 
 end

@@ -20,6 +20,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-jquery-validation'
 end
 
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -34,6 +35,3 @@ gem 'poltergeist'
 gem 'selenium-webdriver'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
-
-# Use unicorn as the app server
-# gem 'unicorn'

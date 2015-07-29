@@ -4,21 +4,27 @@
     * Am I typically going to be building front end stuff rapidly?
     * Should I handle mailings too?
     * Is there a javascript html templating solution used internally at the moment?
+    * Is there a way to publicly register your dissent with a particular stance with your representatives and make that information publicly available so
+      the domestic population knows which senetors/ congress members need to be removed from office?
 
 ## 0.0.x
 
   - Show off by using Faye instead of polling =D
+  - implement admin interface?
+  - Optimize the SQL query so it's cached?
   - Setup env for production (nginx + thin + mongrels?)
-  - Handle the thank_you as a modal
-  - Validate uniqueness of email, change thankyou to "You already signed successfully."
+
   - Add some functional tests
     * Research proper javascript testing methods
   - Use javascript html templating
     - Research and email
+  - Handle the thank_you as a modal
   - Signing should be an ajax function
 
 
 Currently:
+
+  - Validate uniqueness of email, change thankyou to "You already signed successfully."
 
   - Validations: email, zipcode
 

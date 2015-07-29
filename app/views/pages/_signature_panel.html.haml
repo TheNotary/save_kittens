@@ -3,12 +3,14 @@
     #tweet-tool.tool
       .tool-container
         .tool-heading
-          %h3.tool-title
+          %h3.tool-title Sign the Petition Now!
         .tool-body
-          = render 'pages/signature_form.html.haml'
+          #tweet-tool-container
+            = render 'pages/signature_form.html.haml'
 
-        .left-justify
-          = render 'pages/signature_stats.html.haml'
+            .left-justify
+              = render 'pages/signature_stats.html.haml'
+          #tweet-tool-container
 
     #share-buttons-wrapper
       #share-buttons

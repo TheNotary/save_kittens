@@ -3,6 +3,8 @@ var PageUI = function (signatureCount, topThreeStates) {
   this.topThreeStates = topThreeStates;
 
   this.init = function() {
+    $('form').validate();
+
     var data = { signatureCount: this.lastSignatureCount,
                  topThreeStates: this.topThreeStates };
 
@@ -107,4 +109,6 @@ var PageUI = function (signatureCount, topThreeStates) {
 
 window.pageUI = new PageUI(gon.signatureCount, gon.topThreeStates);
 
-pageUI.init();
+$(document).ready(function(){
+  pageUI.init();
+});

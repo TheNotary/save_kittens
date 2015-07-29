@@ -10,17 +10,17 @@
     .col-md-3
       = f.label :name
     .col-md-3
-      = f.text_field :name
+      = f.text_field :name, :class => "required"
   .field.row
     .col-md-3
       = f.label :email
     .col-md-3
-      = f.text_field :email
+      = f.text_field :email, :class => "required email"
   .field.row
     .col-md-3
       = f.label :zip
     .col-md-3
-      = f.text_field :zip
+      = f.text_field :zip, :class => "required zipcodeUS"
   .field.row
     .col-md-1
       = f.check_box :subscriber

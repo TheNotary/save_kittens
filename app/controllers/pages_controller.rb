@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
   def home
-
     @twitter_card = TwitterCard.new(
       header: "Stop the Cat Grabbers!",
       body: "Cats are about to be banned from the internet by a bunch of people who don't know how the internet works! ",
@@ -12,7 +11,6 @@ class PagesController < ApplicationController
       body: "Cats are about to be banned from the internet by a bunch of people who don't know how the internet works! ",
       img: "images/Sad-Cat-1_s.jpg",
       url: "").render
-
 
     @signature = Signature.new
     @signature_count = Signature.count
