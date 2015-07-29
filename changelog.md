@@ -14,11 +14,12 @@
 
 Currently:
 
-  - BUG: emergency fixed the thank_you to render a tiny bit nicer, though should become a modal I think...
 
 
 Finished:
 
+  - BUG:  pluralization of "the top 2 most committed state is"
+  - BUG: emergency fixed the thank_you to render a tiny bit nicer, though should become a modal I think...
   - Hide the /signatures link since wasn't requested
   - Signature Form: name, email, subscribe to our list, and zip code, state
   - Stats for page counter:  Show top 3 states contributing signatures

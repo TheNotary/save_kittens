@@ -14,8 +14,8 @@
       The top
       %span.topStatesCount=number_to_human @t.count
       most committed
-      = "state".pluralize(@t.count)
-      #{@t.count == 1 ? "is" : "are"}...
+      %span.signature-plural states are...
+      %span.signature-singular state is...
     %ul#top-states-list
       - @t.each do |state|
         %li=state
