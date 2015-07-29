@@ -4,55 +4,19 @@
   <title>SaveKittens</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= include_gon %>
-
-  <style type='text/css'>
-    .redtop {
-      background: #000 url("/images/CISA-banner-1.png") center no-repeat;
-      background-size: cover;
-  	  padding-top: 5em !important;
-    }
-    .navbar-wrapper {
-    	background-color: transparent !important;
-    	position: absolute !important;
-    	left: 0 !important;
-    	right: 0 !important;
-    }
-    .navbar-wrapper .navbar-inverse {
-    	background-color: transparent !important;
-    }
-    .navbar-wrapper .horiz-rule {
-    	background-color: #fff !important;
-    	opacity: 0.3 !important;
-    }
-    .navbar-collapse.collapse.in, .navbar-collapse.collapsing {
-      background: rgb(0, 0, 0);
-      background: rgba(0, 0, 0, 0.8);
-    }
-    .left-justify {
-      text-align:left;
-    }
-  </style>
-
+  <%= render 'layouts/styling_left_inline' %>
   <%= csrf_meta_tags %>
 </head>
 
 <body class=" action_page-show">
 
-  <svg style="display: none;">
-    <defs>
-      <polygon id="triangle" points="24,0 24,24 0,24 "/>
-      <polygon id="arrow" points="0,0 0,10 8,5 "/>
-    </defs>
-  </svg>
-
-<%= render 'layouts/navigation.html.erb' %>
-
+  <%= render 'layouts/svg_definitions' %>
+  <%= render 'layouts/navigation.html.erb' %>
 
   <div class="wrapper">
     <div id="content">
-      <div class="redtop">
-        <%= render 'pages/header.html.haml' %>
-      </div>
+      <%= render 'pages/header.html.haml' %>
+
       <div class="container action-content" data-action-id="99">
         <div class="row">
           <%= yield %>

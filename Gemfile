@@ -17,6 +17,7 @@ gem 'turbolinks'
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-jquery-ujs'
+  gem 'rails-assets-jquery-validation'
 end
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

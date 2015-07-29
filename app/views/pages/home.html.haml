@@ -1,8 +1,8 @@
 %meta{:content => "Stop the Cat Grabbers!", :name => "description"}/
 %meta{:content => "https://www.facebook.com/eff", :property => "article:publisher"}/
 
-= TwitterCard.new(header: "Stop the Cat Grabbers!", body: "Cats are about to be banned from the internet by a bunch of people who don't know how the internet works! ", img: "images/Sad-Cat-1_s.jpg", url: "").render
-= GoogleCard.new(header: "Stop the Cat Grabbers!", body: "Cats are about to be banned from the internet by a bunch of people who don't know how the internet works! ", img: "images/Sad-Cat-1_s.jpg", url: "").render
+= @twitter_card
+= @google_card
 
 = render 'pages/signature_panel.html.haml'
 = render 'pages/description.html.haml'

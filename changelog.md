@@ -8,20 +8,19 @@
 ## 0.0.x
 
   - Show off by using Faye instead of polling =D
-  - Setup env for production
+  - Setup env for production (nginx + thin + mongrels?)
   - Handle the thank_you as a modal
   - Validate uniqueness of email, change thankyou to "You already signed successfully."
-  - Signing should be an ajax function
   - Add some functional tests
     * Research proper javascript testing methods
   - Use javascript html templating
     - Research and email
+  - Signing should be an ajax function
 
-  - Validations: email, zipcode
 
 Currently:
 
-
+  - Validations: email, zipcode
 
 
 Finished:
