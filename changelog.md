@@ -3,6 +3,7 @@
     * Do I get extra points for setting up nginx/ thin on the test machine?
     * Am I typically going to be building front end stuff rapidly?
     * Should I handle mailings too?
+    * Is there a javascript html templating solution used internally at the moment?
 
 ## 0.0.x
 
@@ -14,16 +15,19 @@
   - Signing should be an ajax function
   - Add some functional tests
     * Research proper javascript testing methods
+  - Use javascript html templating
+    - Research and email
 
 
 Currently:
 
-  - Update payload on social media icons
+  - Update social media cards
 
 
 
 Finished:
 
+  - Update payload on social media icons
   - BUG:  pluralization of "the top 2 most committed state is"
   - BUG: emergency fixed the thank_you to render a tiny bit nicer, though should become a modal I think...
   - Hide the /signatures link since wasn't requested
