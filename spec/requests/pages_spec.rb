@@ -9,9 +9,7 @@ describe "Pages" do
       expect(response.status).to be(200)
     end
 
-    it "It has javascript that can update" do |member|
 
-    end
 
   end
 

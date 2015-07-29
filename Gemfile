@@ -29,6 +29,7 @@ gem 'spring',        group: :development
 
 gem 'capybara'
 gem 'poltergeist'
+gem 'selenium-webdriver'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
 

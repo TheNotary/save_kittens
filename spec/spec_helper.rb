@@ -2,6 +2,7 @@ require 'pry'
 require 'rails_helper'
 require 'capybara/rails'
 require 'capybara/poltergeist'
+Selenium::WebDriver::Firefox::Binary.path="/usr/bin/firefox"
 Capybara.javascript_driver = :poltergeist
 Capybara.default_driver = :poltergeist
 

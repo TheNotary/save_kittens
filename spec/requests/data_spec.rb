@@ -14,6 +14,7 @@ describe "Pages" do
     end
 
     it "Returns expected values as input is delivered" do
+      # set's an initial state so topThreeStates displays
       FactoryGirl.create(:signature, zip: '94080')
       FactoryGirl.create(:signature, zip: '94080')
       FactoryGirl.create(:signature, zip: '94080')
@@ -26,6 +27,10 @@ describe "Pages" do
       get "/data/fresh_data"
       d = JSON.parse(response.body)
 
+
+
+      # Verify that when a 3rd place state get's the most signatures, it gets
+      # bumped up in rank properly
       expect(d["signatureCount"]).to eq 6
       expect(d["topThreeStates"]).to eq ["CA", "MN", "NY"]
 
