@@ -24,11 +24,12 @@
 
 Currently:
 
-  - validate email presence
-  - validate name presence
+
 
 
 Finished:
+  - validate email presence
+  - validate name presence
   - Validate uniqueness of email, change thankyou to "You already signed successfully."
   - Validations: email, zipcode
   - Update social media cards

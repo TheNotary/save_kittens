@@ -18,3 +18,10 @@
 .error {
   color: red;
 }
+
+.figure {
+  width:265px;
+  height:179px;
+  border-radius:30%;
+  overflow:hidden;
+}
