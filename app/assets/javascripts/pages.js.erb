@@ -39,6 +39,8 @@ var PageUI = function (signatureCount, topThreeStates) {
     // set the number of top states
     $(".topStatesCount").html(data.topThreeStates.length);
 
+    pluralizeStateStatements(data);
+
     populateTopStatesList(data);
 
     showHideTopStatesDependingOnSignatureCount(data);
@@ -76,6 +78,17 @@ var PageUI = function (signatureCount, topThreeStates) {
       $(".beTheFirst").show();
     else
       $(".beTheFirst").hide();
+  };
+
+  var pluralizeStateStatements = function(data) {
+    if (data.topThreeStates.length == 1) {
+      $(".state-plural").hide();
+      $(".state-singular").show();
+    }
+    else {
+      $(".state-plural").show();
+      $(".state-singular").hide();
+    }
   };
 
   var pluralizeSignatureStatements = function(data) {
