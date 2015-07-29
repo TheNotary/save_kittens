@@ -1,0 +1,20 @@
+.col-xs-12.col-sm-5.col-md-6.col-lg-6.pull-right.tools-wrapper
+  #tools
+    #tweet-tool.tool
+      .tool-container
+        .tool-heading
+          %h3.tool-title
+        .tool-body
+          = render 'pages/signature_form.html.haml'
+
+        .left-justify
+          = render 'pages/signature_stats.html.haml'
+
+    #share-buttons-wrapper
+      #share-buttons
+        %a.twitter-button.social-count{:count => "0", "data-network" => "twitter", :href => "https://twitter.com/intent/tweet?status=https%3A%2F%2Fact.eff.org%2Faction%2Fstop-the-cyber-bills+via+%40eff&related=eff,efflive", :target => "_blank"}
+          #stwit.sicon
+        %a.social-count.facebook-button{:count => "0", "data-network" => "facebook", :href => "https://www.facebook.com/sharer/sharer.php?app_id=97703891945&u=https://act.eff.org/action/stop-the-cyber-bills&display=popup", :target => "_blank"}
+          #sfb.sicon
+        %a.social-count.google-button{:count => "0", "data-network" => "googleplus", :href => "https://plus.google.com/share?url=https://act.eff.org/action/stop-the-cyber-bills", :target => "_blank"}
+          #sgplus.sicon

@@ -9,30 +9,23 @@ var PageUI = function (signatureCount, topThreeStates) {
 
     updateGuiWithData(data);
 
-    this.beginPollingForData();
+    //this.beginPollingForData();
   };
 
   this.beginPollingForData = function() {
     setInterval(function(){
-      console.log(pageUI.lastSignatureCount);
-      //console.log(gon.signatureCount);
       pageUI.checkForNewData();
     }, 2000);
   };
 
+  // request data from /data/fresh_data and update DOM
   this.checkForNewData = function() {
-
-    // request data from /fresh_data
     $.ajax({url: "/data/fresh_data", success: function(result){
       if (result.signatureCount != pageUI.lastSignatureCount) {
-        console.log("UI update needed.  Last sig Count: " + pageUI.lastSignatureCount + "\n data: " + result.signatureCount);
+        // console.log("UI update needed.  Last sig Count: " + pageUI.lastSignatureCount + "\n data: " + result.signatureCount);
         pageUI.lastSignatureCount = parseInt(result.signatureCount);
         updateGuiWithData(result);
       }
-      else{
-        //console.log("UI UPdate not needed.  Last sig Count: " + pageUI.lastSignatureCount);
-      }
-
     }});
   };
 
@@ -40,7 +33,6 @@ var PageUI = function (signatureCount, topThreeStates) {
     tailorSigCount(data);
     tailorTopStates(data);
   };
-
 
 
   var tailorTopStates = function(data) {
@@ -78,8 +70,8 @@ var PageUI = function (signatureCount, topThreeStates) {
     pluralizeSignatureStatements(data);
   };
 
+  // remove "be the first" statement if there's at least 1 signature
   var showHideBeTheFirstDependingOnSignatureCount = function(data) {
-    // remove "be the first" statement
     if(data.signatureCount == 0)
       $(".beTheFirst").show();
     else
@@ -97,11 +89,8 @@ var PageUI = function (signatureCount, topThreeStates) {
     }
   };
 
-
 };
 
-
-// set 2 second timeout to pull down new data
 
 window.pageUI = new PageUI(gon.signatureCount);
 

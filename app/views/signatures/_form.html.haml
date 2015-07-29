@@ -6,17 +6,26 @@
         - @signature.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
-    = f.label :name
-    = f.text_field :name
-  .field
-    = f.label :email
-    = f.text_field :email
-  .field
-    = f.label :zip
-    = f.text_field :zip
-  .field
-    = f.label "I want to subscribe to the Mailing List"
-    = f.check_box :subscriber
+  .field.row
+    .col-md-3
+      = f.label :name
+    .col-md-3
+      = f.text_field :name
+  .field.row
+    .col-md-3
+      = f.label :email
+    .col-md-3
+      = f.text_field :email
+  .field.row
+    .col-md-3
+      = f.label :zip
+    .col-md-3
+      = f.text_field :zip
+  .field.row
+    .col-md-1
+      = f.check_box :subscriber
+    .col-md-8
+      = f.label "I want to subscribe to the Mailing List"
+
   .actions
     = f.submit 'Sign!'

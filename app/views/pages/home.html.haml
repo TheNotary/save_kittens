@@ -1,42 +1,8 @@
-%h1 The Internet Needs Your Help!
+.redtop
+  = render 'pages/header.html.haml'
 
-%img#sad_cat{src:"/images/Sad-Cat-1_s.jpg", width:265, height:179}
 
-.explain
-  %p
-    Cats are about to be banned from the internet
-    by a bunch of people who don't know how the internet works!
-
-  %h4
-    Do Something Quick!
-
-  %ul
-    %li Sign the petition (500pts)
-    %li Leave a voicemail with your congress persons (1,000pts)
-    %li Link this page to everyone you know (10,000pts!)
-
-  .signature-form
-    %h4 Sign Now!
-    = render '/signatures/form'
-
-  .signature-stats
-    %h4 Did you know...
-    .sig-count
-      %p
-        We've had
-        %span.signatureCount= @signature_count
-        %span.signature-plural signatures
-        %span.signature-sigular signature
-        so far.
-        %span.beTheFirst #{"Be the first!" if @signature_count == 0}
-
-    .top-states
-      %p
-        The top
-        %span.topStatesCount=number_to_human @t.count
-        most committed
-        = "state".pluralize(@t.count)
-        #{@t.count == 1 ? "is" : "are"}...
-      %ul#top-states-list
-        - @t.each do |state|
-          %li=state
+.container.action-content{"data-action-id" => "99"}
+  .row
+    = render 'pages/signature_panel.html.haml'
+    = render 'pages/description.html.haml'

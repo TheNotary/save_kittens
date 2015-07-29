@@ -1,0 +1,21 @@
+.signature-stats
+  %h4 Did you know...
+  .sig-count
+    %p
+      We've had
+      %span.signatureCount= @signature_count
+      %span.signature-plural signatures
+      %span.signature-sigular signature
+      so far.
+      %span.beTheFirst #{"Be the first!" if @signature_count == 0}
+
+  .top-states
+    %p
+      The top
+      %span.topStatesCount=number_to_human @t.count
+      most committed
+      = "state".pluralize(@t.count)
+      #{@t.count == 1 ? "is" : "are"}...
+    %ul#top-states-list
+      - @t.each do |state|
+        %li=state
