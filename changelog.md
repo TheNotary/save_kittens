@@ -10,7 +10,6 @@
   - Show off by using Faye instead of polling =D
   - Setup env for production
   - Handle the thank_you as a modal
-  - Validations: email, zipcode
   - Validate uniqueness of email, change thankyou to "You already signed successfully."
   - Signing should be an ajax function
   - Add some functional tests
@@ -18,15 +17,16 @@
   - Use javascript html templating
     - Research and email
 
+  - Validations: email, zipcode
 
 Currently:
 
-  - Update social media cards
 
 
 
 Finished:
 
+  - Update social media cards
   - Update payload on social media icons
   - BUG:  pluralization of "the top 2 most committed state is"
   - BUG: emergency fixed the thank_you to render a tiny bit nicer, though should become a modal I think...
