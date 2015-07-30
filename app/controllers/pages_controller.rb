@@ -24,4 +24,8 @@ class PagesController < ApplicationController
 
   def about
   end
+
+  def admin
+    admins_only!
+  end
 end

@@ -1,6 +1,8 @@
 class SignaturesController < ApplicationController
   before_action :set_signature, only: [:show, :edit, :update, :destroy]
 
+  before_filter :admins_only!, only: [:show, :index, :update, :destroy]
+
   # GET /signatures
   # GET /signatures.json
   def index

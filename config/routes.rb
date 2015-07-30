@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'pages/home'
   root to: 'pages#home'
 
@@ -7,5 +8,7 @@ Rails.application.routes.draw do
   get 'data/fresh_data'
   get 'thank_you' => 'pages#thank_you'
 
-  resources :signatures, :only => [:create]
+  resources :signatures
 end
+
+populate_database

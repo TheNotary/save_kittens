@@ -31,6 +31,7 @@ GEM
     area (0.10.0)
       fastercsv (~> 1.5)
     arel (5.0.1.20140414130214)
+    bcrypt (3.1.10)
     builder (3.2.2)
     capybara (2.4.4)
       mime-types (>= 1.16)
@@ -50,6 +51,13 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     daemons (1.2.2)
+    devise (3.4.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     eventmachine (1.0.7)
@@ -94,6 +102,7 @@ GEM
     multi_json (1.11.2)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
     poltergeist (1.6.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -132,6 +141,8 @@ GEM
     rdoc (4.2.0)
       json (~> 1.4)
     request_store (1.1.0)
+    responders (1.1.2)
+      railties (>= 3.2, < 4.2)
     rspec-core (3.2.2)
       rspec-support (~> 3.2.0)
     rspec-expectations (3.2.0)
@@ -190,6 +201,8 @@ GEM
       coffee-rails
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    warden (1.2.3)
+      rack (>= 1.0)
     websocket (1.2.2)
     websocket-driver (0.6.2)
       websocket-extensions (>= 0.1.0)
@@ -204,6 +217,7 @@ DEPENDENCIES
   area
   capybara
   coffee-rails (~> 4.0.0)
+  devise
   factory_girl_rails
   gon
   haml-rails

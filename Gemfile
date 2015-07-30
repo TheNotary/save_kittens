@@ -4,6 +4,7 @@ gem 'rails', '4.1.12'
 gem 'thin'
 gem 'sqlite3'
 
+gem 'devise'
 gem 'area'
 gem 'gon'
 

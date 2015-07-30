@@ -1,31 +1,49 @@
 ## 0.1.x
-  - Email:
-    * Do I get extra points for setting up nginx/ thin on the test machine?
-    * Am I typically going to be building front end stuff rapidly?
-    * Should I handle mailings too?
-    * Is there a javascript html templating solution used internally at the moment?
-    * Is there a way to publicly register your dissent with a particular stance with your representatives and make that information publicly available so
-      the domestic population knows which senetors/ congress members need to be removed from office?
+
+STUFF I SHOULDN'T SPEND TIME ON:
+  - Setup env for production (nginx + thin + mongrels?)
+  - Optimize the SQL query so it's cached?
+
+
 
 ## 0.0.x
 
-  - Show off by using Faye instead of polling =D
-  - implement admin interface?
-  - Optimize the SQL query so it's cached?
-  - Setup env for production (nginx + thin + mongrels?)
+
+STUFF OF UNKNOWN IMPORTANCE:
 
   - Add some functional tests
     * Research proper javascript testing methods
   - Use javascript html templating
     - Research and email
-  - Handle the thank_you as a modal
-  - Signing should be an ajax function
 
 
-Currently:
+
+STUFF OF VERY HIGH IMPORTANCE:
+
+  - Just using a pre-existing theme indicates you can't roll your own stuff
+    - Handle the thank_you as a modal
+    - Signing should be an ajax function
+
+  - Show off by using websockets instead of polling =D
+
+  - Implement admin interface at /signatures !
+    > Pop in devise for logins!!!  
+    > Make a heat map that indicates activity across the states/ cities?
+    > Show statistics like "lumps of registrations" on a timeline
+    > Make certain things are fancy and show off my CSS skills properly
 
   - Learn node.js or express node, and replace 2 second polling with websocket
     connections
+
+Currently:
+
+  - Add the #admins_only before filter
+
+  - create the /admin page
+    > Download all emails button
+    > See a cool timeline of when people signed
+    > Heat map
+    > re-enable the scaffolding for /signatures and force admins only...
 
 
 Finished:
