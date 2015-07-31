@@ -8,11 +8,12 @@
       %th Zip
       %th State
       %th Subscriber
+      %th Created...
       %th
       %th
       %th
 
-  %tbody
+  %tbody.signatures_body
     - @signatures.each do |signature|
       %tr
         %td= signature.name
@@ -20,9 +21,10 @@
         %td= signature.zip
         %td= signature.state
         %td= signature.subscriber
-        %td= link_to 'Show', signature
-        %td= link_to 'Edit', edit_signature_path(signature)
-        %td= link_to 'Destroy', signature, :method => :delete, :data => { :confirm => 'Are you sure?' }
+        %td #{time_ago_in_words signature.created_at} ago
+        %td.button= link_to 'Show', signature
+        %td.button= link_to 'Edit', edit_signature_path(signature)
+        %td.button= link_to 'Destroy', signature, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
