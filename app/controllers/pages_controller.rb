@@ -15,6 +15,8 @@ class PagesController < ApplicationController
     @signature = Signature.new
     @signature_count = Signature.count
     @t = Signature.top_three_states
+    # These gon assignments can cause bugs because if you start on the admin
+    # page, and then turbo link to home, gon won't be set properly...
     gon.topThreeStates = @t
     gon.signatureCount = @signature_count
     @first_state = @t[0]
@@ -33,5 +35,7 @@ class PagesController < ApplicationController
     @signatures_today = Signature.today.count
     @signatures_this_hour = Signature.this_hour.count
     @growth_today = Signature.growth_today
+
+    gon.signaturesByDayThisWeek = Signature.by_day_this_week
   end
 end

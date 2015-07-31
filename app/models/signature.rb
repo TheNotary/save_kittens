@@ -25,9 +25,21 @@ class Signature < ActiveRecord::Base
     Rails.cache.write('signatureCount', nil)
   end
 
+  # json api
   def self.to_json
     { signatureCount: self.cached_count,
       topThreeStates: self.top_three_states }.to_json
+  end
+
+  # json api
+  def self.by_day_this_week
+    data = []
+    6.downto(0) do |i|
+      day_name = i.days.ago.utc.strftime("%A")
+      count = records_from_x_days_ago(i).count
+      data << { Day: day_name, Signatures: count}
+    end
+    data
   end
 
   def self.cached_count
@@ -61,6 +73,10 @@ class Signature < ActiveRecord::Base
   scope :today, -> { where("created_at >= ?", 1.day.ago.utc) }
   scope :yesterday, -> { where(:created_at => 2.days.ago.utc..1.day.ago.utc) }
   scope :this_hour, -> { where("created_at >= ?", 1.hour.ago.utc) }
+
+  def self.records_from_x_days_ago(n)
+    self.where(:created_at => (n+1).days.ago.utc..n.day.ago.utc)
+  end
 
   def self.growth_today
     return "N/A (calculation requires yesterday to have signatures)"

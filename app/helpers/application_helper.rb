@@ -9,6 +9,6 @@ module ApplicationHelper
   end
 
   def page_class
-    controller.class.to_s.gsub("Controller", '').underscore.gsub("/", '_')+" "+content_for(:page_class)
+    controller.class.to_s.gsub("Controller", '').underscore.gsub("/", '_')+" "+content_for(:page_class).to_s
   end
 end

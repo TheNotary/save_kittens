@@ -2,7 +2,55 @@ window.APP.pages = window.APP.pages || {};
 <% page_id = "#{File.basename(File.expand_path("..", __FILE__))}-#{File.basename(__FILE__, ".js.erb")}".to_json %>
 
 window.APP.pages[<%= page_id %>] = function() {
+
+  // prepare jqxChart settings
+  var chartSettings = {
+      title: "Signatures over This Week",
+      description: "Time spent in vigorous exercise",
+      padding: { left: 5, top: 5, right: 5, bottom: 5 },
+      titlePadding: { left: 90, top: 0, right: 0, bottom: 10 },
+      source: sampleData,
+      xAxis:
+          {
+              dataField: 'Day',
+              gridLines: {visible: false}
+          },
+      colorScheme: 'scheme01',
+      seriesGroups:
+          [
+              {
+                  type: 'spline',
+                  columnsGapPercent: 30,
+                  seriesGapPercent: 0,
+                  valueAxis:
+                  {
+                      minValue: 0,
+                      maxValue: 100,
+                      unitInterval: 10,
+                      description: 'Time in minutes'
+                  },
+                  series: [
+                          { dataField: 'Keith', displayText: 'Keith'},
+                          { dataField: 'Erica', displayText: 'Erica'},
+                          { dataField: 'George', displayText: 'George'}
+                      ]
+              }
+          ]
+  };
+
 	$(document).ready(function() {
-    
+    $('#chartContainer').jqxChart(chartSettings);
   });
 };
+
+
+
+var sampleData = [
+    
+    { Day:'Tuesday', Keith:25, Erica:25, George: 30},
+    { Day:'Wednesday', Keith:30, Erica:20, George: 25},
+    { Day:'Thursday', Keith:35, Erica:25, George: 45},
+    { Day:'Friday', Keith:20, Erica:20, George: 25},
+    { Day:'Saturday', Keith:30, Erica:20, George: 30},
+    { Day:'Sunday', Keith:60, Erica:45, George: 90}
+];

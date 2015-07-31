@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'pages/about'
 
   get 'data/fresh_data'
+  get 'data/signatures_by_day_this_week'
   get 'thank_you' => 'pages#thank_you'
 
   resources :signatures
