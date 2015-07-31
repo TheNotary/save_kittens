@@ -3,7 +3,6 @@ require 'spec_helper'
 describe "Pages" do
 
   describe "GET /" do
-
     it "Works!" do
       get "/"
       expect(response.status).to be(200)
@@ -13,8 +12,6 @@ describe "Pages" do
       get "/"
       expect(response.body).to include("members")
     end
-
-    
   end
 
 end

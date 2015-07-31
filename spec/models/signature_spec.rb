@@ -2,8 +2,6 @@ require 'spec_helper'
 
 describe "Signature" do
 
-  
-
   it "should create a new instance given a valid attribute" do
     s = FactoryGirl.create(:signature, zip: "11211")
     expect(s.state).to eq "NY"

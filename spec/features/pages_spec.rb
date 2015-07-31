@@ -3,6 +3,20 @@ require 'spec_helper'
 RSpec.feature "Pages", :type => :feature do
   before :each do
     Capybara.default_driver = :selenium
+    populate_database
+  end
+
+  scenario "The admin can login to the admin page", :js => true do
+    visit "/"
+    click_link "Login"
+
+    fill_in "user_email", with: "admin@eff.org"
+    fill_in "user_password", with: "#{ENV["CATS_ADMIN_PASSWORD"]}"
+    click_button "Log in"
+    expect(page).to have_content("Signed in successfully.")
+
+    click_link "Admin Page"
+    expect(page).to have_content("Last 7 Days")
   end
 
   scenario "Visiting the home page with no signatures", :js => true do
