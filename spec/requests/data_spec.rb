@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe "Pages" do
+
   
-  before(:each) do
-    Rails.cache.clear
-  end
 
   describe "GET /data/fresh_data" do
 

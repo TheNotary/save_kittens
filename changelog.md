@@ -49,7 +49,8 @@ Currently:
     > See a cool timeline of when people signed
     https://github.com/loule/js-chart-widgets/
 
-  - Your existing tests are failing =(
+
+  - BUG:  cached count showing 9, but count showing 1 following... a delete_all ??
 
 
 Finished:

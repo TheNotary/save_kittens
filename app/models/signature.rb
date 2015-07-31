@@ -15,14 +15,14 @@ class Signature < ActiveRecord::Base
   # and also set the cache value that /fresh_data is based upon
   def cache_signature_data_and_server
     invalidate_cache
-    Rails.cache.write('topThreeStates', self.class.top_three_states, expires_in: 10.minutes)
-    Rails.cache.write('signatureCount', self.class.count, expires_in: 10.minutes)
+    Rails.cache.write("topThreeStates", self.class.top_three_states, expires_in: 10.minutes)
+    Rails.cache.write("signatureCount", self.class.count, expires_in: 10.minutes)
     update_clients
   end
 
   def invalidate_cache
-    Rails.cache.write('topThreeStates', nil)
-    Rails.cache.write('signatureCount', nil)
+    Rails.cache.write("topThreeStates", nil)
+    Rails.cache.write("signatureCount", nil)
   end
 
   # json api
@@ -43,7 +43,7 @@ class Signature < ActiveRecord::Base
   end
 
   def self.cached_count
-    Rails.cache.read('signatureCount') or self.count
+    Rails.cache.read("signatureCount") or self.count
   end
 
   # sends a signal to all clients indcating Signature.count and the
@@ -56,12 +56,12 @@ class Signature < ActiveRecord::Base
   # and utilizes caching since there's polling going on which really adds up
   # on server CPU time fast.
   def self.top_three_states
-    cached_top_three = Rails.cache.read('topThreeStates')
+    cached_top_three = Rails.cache.read("topThreeStates")
     if cached_top_three.nil?
       a = Signature.select(:state).group(:state).order("count(state) DESC").limit(3)
 
       top3 = a.map { |query| query.state }
-      Rails.cache.write('topThreeStates', top3)
+      Rails.cache.write("topThreeStates", top3)
 
       top3
     else

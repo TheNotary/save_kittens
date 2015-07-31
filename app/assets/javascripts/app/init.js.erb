@@ -1,6 +1,6 @@
 window.APP = {
   pageChanged: function() {
-    if (window.APP.currentPage != undefined)
+    //if (window.APP.currentPage != undefined)
       this.initPageSpecificJavascript();
   },
   initPageSpecificJavascript: function(){
@@ -12,7 +12,6 @@ window.APP = {
 
   	if (APP.pages && APP.pages[dataScript]) {
   		APP.currentPage = new APP.pages[dataScript]();
-
   	}
     else
         APP.currentPage = {};  // need something defined so we know the app loaded once
@@ -23,5 +22,5 @@ window.APP = {
 window.APP.pages = {};
 
 $(document).ready(function() {
-  APP.initPageSpecificJavascript();
+  //APP.initPageSpecificJavascript();
 });

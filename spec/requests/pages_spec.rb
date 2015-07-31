@@ -12,7 +12,6 @@ describe "Pages" do
     it "Shouldn't have errors pluralizing any of the data" do
       get "/"
       expect(response.body).to include("members")
-      binding.pry
     end
 
 
