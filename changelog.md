@@ -38,15 +38,13 @@ STUFF OF VERY HIGH IMPORTANCE:
 Currently:
 
   - create the /admin page
-    > Download all emails button
     > See a cool timeline of when people signed
-    > re-enable the scaffolding for /signatures and force admins only...
-
     > HEAT map
     http://www.patrick-wied.at/static/heatmapjs/
 
 
 Finished:
+  - Started admin page
   - Add the #admins_only before filter
   - validate email presence
   - validate name presence
@@ -56,7 +54,6 @@ Finished:
   - Update payload on social media icons
   - BUG:  pluralization of "the top 2 most committed state is"
   - BUG: emergency fixed the thank_you to render a tiny bit nicer, though should become a modal I think...
-  - Hide the /signatures link since wasn't requested
   - Signature Form: name, email, subscribe to our list, and zip code, state
   - Stats for page counter:  Show top 3 states contributing signatures
   - refresh stats every 2 seconds

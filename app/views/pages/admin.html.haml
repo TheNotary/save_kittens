@@ -1,17 +1,19 @@
 %h1 Admin Page
 
 .row.admin-blocks
-  .col-md-3
-    %h6 Lateley
+  .col-md-4
+    %h6 New Signatures
     .row
-      Signatures in the past week:
+      Last 7 Days:
       = @signatures_this_week
     .row
-      Signatures in the past Day:
+      Last 24 Hours:
       = @signatures_today
     .row
-      Signatures in the past hour:
+      Last Hour:
       = @signatures_this_hour
+    .row
+      %br
     .row
       Growth Rate Today:
       = @growth_today
@@ -22,9 +24,11 @@
       Total Signers:
       =@total_signers
     .row
-      =link_to "Heat Map", "/pages/heat_map"
+      =link_to "Download Email List", "/signatures.json"
     .row
-      =link_to "Time Line", "/pages/time_line"
+      =link_to "Heat Map", "/pages/heat_map", class: 'hidden'
+    .row
+      =link_to "Time Line", "/pages/time_line", class: 'hidden'
 
   .col-md-3
     %h6 Database Inspection
