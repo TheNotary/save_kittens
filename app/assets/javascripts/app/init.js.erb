@@ -1,0 +1,10 @@
+window.APP = {};
+window.APP.pages = {};
+
+$(document).ready(function() {
+	window.dataScript = document.body.getAttribute("id");
+
+	if (APP.pages && APP.pages[dataScript]) {
+		APP.currentPage = new APP.pages[dataScript]();
+	}
+});

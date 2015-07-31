@@ -37,13 +37,19 @@ STUFF OF VERY HIGH IMPORTANCE:
 
 Currently:
 
+  - Add really good request specs to capture all possible states of the
+    javascript tempate since you missed that bug
+
   - create the /admin page
-    > See a cool timeline of when people signed
     > HEAT map
     http://www.patrick-wied.at/static/heatmapjs/
 
+    > See a cool timeline of when people signed
+    https://github.com/loule/js-chart-widgets/
+
 
 Finished:
+  - implement page-specific javascript
   - Started admin page
   - Add the #admins_only before filter
   - validate email presence

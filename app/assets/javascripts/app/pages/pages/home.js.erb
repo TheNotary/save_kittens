@@ -1,3 +1,14 @@
+<% page_id = "#{File.basename(File.expand_path("..", __FILE__))}-#{File.basename(__FILE__, ".js.erb")}".to_json %>
+
+window.APP.pages[<%= page_id %>] = function() {
+  window.pageUI = new PageUI(gon.signatureCount, gon.topThreeStates);
+
+	$(document).ready(function() {
+    pageUI.init();
+  });
+};
+
+// Hanldes all the js fun for '/'
 var PageUI = function (signatureCount, topThreeStates) {
   this.lastSignatureCount = parseInt(signatureCount);
   this.topThreeStates = topThreeStates;
@@ -105,10 +116,3 @@ var PageUI = function (signatureCount, topThreeStates) {
   };
 
 };
-
-
-window.pageUI = new PageUI(gon.signatureCount, gon.topThreeStates);
-
-$(document).ready(function(){
-  pageUI.init();
-});
