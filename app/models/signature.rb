@@ -28,6 +28,18 @@ class Signature < ActiveRecord::Base
     a.map { |query| query.state }
   end
 
+  scope :this_week, -> { where("created_at >= ?", 7.days.ago.utc) }
+  scope :today, -> { where("created_at >= ?", 1.day.ago.utc) }
+  scope :yesterday, -> { where(:created_at => 2.days.ago.utc..1.day.ago.utc) }
+  scope :this_hour, -> { where("created_at >= ?", 1.hour.ago.utc) }
+
+  def self.growth_today
+    return "N/A (calculation requires yesterday to have signatures)"
+    (self.today.count - self.yesterday.count) / self.yesterday.count * 100
+  end
+
+
+
   # State with most sigs... for tests only really
   def self.first_state
     top_three_states[0]

@@ -1,0 +1,32 @@
+%h1 Admin Page
+
+.row.admin-blocks
+  .col-md-3
+    %h6 Lateley
+    .row
+      Signatures in the past week:
+      = @signatures_this_week
+    .row
+      Signatures in the past Day:
+      = @signatures_today
+    .row
+      Signatures in the past hour:
+      = @signatures_this_hour
+    .row
+      Growth Rate Today:
+      = @growth_today
+
+  .col-md-3
+    %h6 Command View
+    .row
+      Total Signers:
+      =@total_signers
+    .row
+      =link_to "Heat Map", "/pages/heat_map"
+    .row
+      =link_to "Time Line", "/pages/time_line"
+
+  .col-md-3
+    %h6 Database Inspection
+    .row
+      =link_to "Inspect Signatures", signatures_path

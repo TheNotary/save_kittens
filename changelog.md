@@ -37,16 +37,17 @@ STUFF OF VERY HIGH IMPORTANCE:
 
 Currently:
 
-  - Add the #admins_only before filter
-
   - create the /admin page
     > Download all emails button
     > See a cool timeline of when people signed
-    > Heat map
     > re-enable the scaffolding for /signatures and force admins only...
+
+    > HEAT map
+    http://www.patrick-wied.at/static/heatmapjs/
 
 
 Finished:
+  - Add the #admins_only before filter
   - validate email presence
   - validate name presence
   - Validate uniqueness of email, change thankyou to "You already signed successfully."

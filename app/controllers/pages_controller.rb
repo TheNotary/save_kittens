@@ -27,5 +27,11 @@ class PagesController < ApplicationController
 
   def admin
     admins_only!
+
+    @total_signers = Signature.count
+    @signatures_this_week = Signature.this_week.count
+    @signatures_today = Signature.today.count
+    @signatures_this_hour = Signature.this_hour.count
+    @growth_today = Signature.growth_today
   end
 end
