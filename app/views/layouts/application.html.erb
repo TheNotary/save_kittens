@@ -4,12 +4,12 @@
   <title>SaveKittens</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= include_gon %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= render 'layouts/styling_left_inline' %>
   <%= csrf_meta_tags %>
 </head>
 
 <body id="<%= page_id %>" class="<%= page_class %> action_page-show">
-
   <%= render 'layouts/svg_definitions' %>
   <%= render 'layouts/navigation.html.erb' %>
 
@@ -27,7 +27,7 @@
 
     <%= render 'layouts/footer.html.haml' %>
   </div>
-
+  <script>APP.pageChanged();</script>
 </body>
-<%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
 </html>

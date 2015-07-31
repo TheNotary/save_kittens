@@ -1,10 +1,24 @@
-window.APP = {};
+window.APP = {
+  pageChanged: function() {
+    if (window.APP.currentPage != undefined)
+      this.initPageSpecificJavascript();
+  },
+  initPageSpecificJavascript: function(){
+    window.APP.intervals.forEach(function(interval){
+      clearInterval(interval);
+    });
+
+    window.dataScript = document.body.getAttribute("id");
+
+  	if (APP.pages && APP.pages[dataScript]) {
+  		APP.currentPage = new APP.pages[dataScript]();
+  	}
+  },
+  intervals: []
+};
+
 window.APP.pages = {};
 
 $(document).ready(function() {
-	window.dataScript = document.body.getAttribute("id");
-
-	if (APP.pages && APP.pages[dataScript]) {
-		APP.currentPage = new APP.pages[dataScript]();
-	}
+  APP.initPageSpecificJavascript();
 });

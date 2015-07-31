@@ -1,3 +1,4 @@
+window.APP.pages = window.APP.pages || {};
 <% page_id = "#{File.basename(File.expand_path("..", __FILE__))}-#{File.basename(__FILE__, ".js.erb")}".to_json %>
 
 window.APP.pages[<%= page_id %>] = function() {
@@ -26,9 +27,10 @@ var PageUI = function (signatureCount, topThreeStates) {
   };
 
   this.beginPollingForData = function() {
-    setInterval(function(){
+    var interval = setInterval(function(){
       pageUI.checkForNewData();
     }, 2000);
+    window.APP.intervals.push(interval);
   };
 
   // request data from /data/fresh_data and update DOM
