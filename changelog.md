@@ -56,7 +56,9 @@ Currently:
         for window to be ready before... invoking a functino that utilized a gon variable....
 
 
+
 Finished:
+  - BUG: when going from thank_you to / the javascript wasn't re-initializing...
   - implement page-specific javascript
   - Started admin page
   - Add the #admins_only before filter

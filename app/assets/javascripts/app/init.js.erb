@@ -12,7 +12,10 @@ window.APP = {
 
   	if (APP.pages && APP.pages[dataScript]) {
   		APP.currentPage = new APP.pages[dataScript]();
+
   	}
+    else
+        APP.currentPage = {};  // need something defined so we know the app loaded once
   },
   intervals: []
 };
