@@ -2,9 +2,9 @@ window.APP.pages = window.APP.pages || {};
 <% page_id = "#{File.basename(File.expand_path("..", __FILE__))}-#{File.basename(__FILE__, ".js.erb")}".to_json %>
 
 window.APP.pages[<%= page_id %>] = function() {
-  window.pageUI = new PageUI(gon.signatureCount, gon.topThreeStates);
 
 	$(document).ready(function() {
+    window.pageUI = new PageUI(gon.signatureCount, gon.topThreeStates);
     pageUI.init();
   });
 };

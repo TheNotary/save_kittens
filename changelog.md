@@ -40,12 +40,20 @@ Currently:
   - Add really good request specs to capture all possible states of the
     javascript tempate since you missed that bug
 
+  - Add tests that admin can log in....
+
   - create the /admin page
     > HEAT map
     http://www.patrick-wied.at/static/heatmapjs/
 
     > See a cool timeline of when people signed
     https://github.com/loule/js-chart-widgets/
+
+  - There's a bug in the pluralization code still
+    > with two signatures from cali...
+      The top 1 most committed states are... state is...
+        >>>> Oh, it's related to the gon changes I'm in the middle of... need to wait
+        for window to be ready before... invoking a functino that utilized a gon variable....
 
 
 Finished:
