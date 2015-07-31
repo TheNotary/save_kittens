@@ -36,6 +36,7 @@ gem 'dalli'
 gem 'memcachier'
 
 
+gem 'database_cleaner'
 gem 'capybara'
 gem 'poltergeist'
 gem 'selenium-webdriver'

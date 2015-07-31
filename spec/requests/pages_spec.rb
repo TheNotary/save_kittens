@@ -14,7 +14,7 @@ describe "Pages" do
       expect(response.body).to include("members")
     end
 
-
+    
   end
 
 end

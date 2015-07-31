@@ -37,8 +37,6 @@ STUFF OF VERY HIGH IMPORTANCE:
 
 Currently:
 
-  - Add really good request specs to capture all possible states of the
-    javascript tempate since you missed that bug
 
   - Add tests that admin can log in....
 
@@ -54,6 +52,7 @@ Currently:
 
 
 Finished:
+  - Added really good selenium driver tests to capture all possible states of pluralization
   - BUG: when going from thank_you to / the javascript wasn't re-initializing...
   - implement page-specific javascript
   - Started admin page
