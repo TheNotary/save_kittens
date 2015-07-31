@@ -49,12 +49,7 @@ Currently:
     > See a cool timeline of when people signed
     https://github.com/loule/js-chart-widgets/
 
-  - There's a bug in the pluralization code still
-    > with two signatures from cali...
-      The top 1 most committed states are... state is...
-        >>>> Oh, it's related to the gon changes I'm in the middle of... need to wait
-        for window to be ready before... invoking a functino that utilized a gon variable....
-
+  - Your existing tests are failing =(
 
 
 Finished:

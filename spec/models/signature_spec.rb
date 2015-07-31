@@ -2,6 +2,10 @@ require 'spec_helper'
 
 describe "Signature" do
 
+  before(:each) do
+    Rails.cache.clear
+  end
+
   it "should create a new instance given a valid attribute" do
     s = FactoryGirl.create(:signature, zip: "11211")
     expect(s.state).to eq "NY"
@@ -31,6 +35,6 @@ describe "Signature" do
     expect(Signature.third_state).to eq "NY"
   end
 
-  
+
 
 end
