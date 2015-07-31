@@ -5,8 +5,16 @@ class Signature < ActiveRecord::Base
 
   before_save :setup_state
 
+  after_save :cache_signature_data_and_server
+
   def setup_state
     self.state = self.zip.to_region(state:true) if state.nil?
+  end
+
+  # after a new signature is created, publish fresh data to the clients
+  # and also set the cache value that /fresh_data is based upon
+  def cache_signature_data_and_server
+    Rails.cache.write('topThreeStates', self.class.top_three_states)
     update_clients
   end
 
@@ -22,10 +30,20 @@ class Signature < ActiveRecord::Base
   end
 
   # Efficiently grabs top three states for ajaxing or what have you
+  # and utilizes caching since there's polling going on which really adds up
+  # on server CPU time fast.
   def self.top_three_states
-    a = Signature.select(:state).group(:state).order("count(state) DESC").limit(3)
+    cached_top_three = Rails.cache.read('topThreeStates')
+    if cached_top_three.nil?
+      a = Signature.select(:state).group(:state).order("count(state) DESC").limit(3)
 
-    a.map { |query| query.state }
+      top3 = a.map { |query| query.state }
+      Rails.cache.write('topThreeStates', top3)
+
+      top3
+    else
+      cached_top_three
+    end
   end
 
   scope :this_week, -> { where("created_at >= ?", 7.days.ago.utc) }

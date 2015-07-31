@@ -17,3 +17,5 @@ Don't forget to precompile the assets.  Due to memory limits, you'll need to ena
 On first boot, the app will run the initializers/populate_database.rb code to make the user.  This only runs if the users table exists, and if there are 0 users in that table.  Now that binstubs is around, this can mess with my bootup script, so you might need to manually invoke the function populate_database after you clear out the users table.
 
 The default admin username is admin@eff.org, the password is exposed as the ENV var CATS_ADMIN_PASSWORD via /root/.rails_secrets
+
+Before deploying, please do a spell check sweep and run the tests with `rake`

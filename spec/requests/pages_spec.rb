@@ -9,6 +9,11 @@ describe "Pages" do
       expect(response.status).to be(200)
     end
 
+    it "Shouldn't have errors pluralizing any of the data" do
+      get "/"
+      expect(response.body).to include("members")
+      binding.pry
+    end
 
 
   end
