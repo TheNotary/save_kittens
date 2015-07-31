@@ -2,6 +2,12 @@
 
 == Deployment instructions
 
+=== Debian commands
+
+    apt-get install memcached
+
+=== App Notes
+
 On production server /root/.rails_secrets has the secret key, and this file is loaded upon ssh login via ~/.bashrc
 
 The app forces ssl, run two instances of thin, one ssl mode on port 443, and the other non-ssl on port 80.  The non-ssl connection will be upgraded.

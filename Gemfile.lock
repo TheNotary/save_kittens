@@ -57,6 +57,7 @@ GEM
       execjs
     coffee-script-source (1.9.1.1)
     daemons (1.2.2)
+    dalli (2.7.4)
     debug_inspector (0.0.2)
     devise (3.4.1)
       bcrypt (~> 3.0)
@@ -102,6 +103,7 @@ GEM
     json (1.8.3)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    memcachier (0.0.2)
     method_source (0.8.2)
     mime-types (2.6.1)
     mini_portile (0.6.2)
@@ -226,11 +228,13 @@ DEPENDENCIES
   binding_of_caller
   capybara
   coffee-rails (~> 4.0.0)
+  dalli
   devise
   factory_girl_rails
   gon
   haml-rails
   jbuilder (~> 2.0)
+  memcachier
   poltergeist
   pry
   rails (= 4.1.12)

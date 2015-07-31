@@ -31,6 +31,8 @@ gem 'pry', group: :development
 gem 'better_errors'
 gem "binding_of_caller"
 gem 'spring',        group: :development
+gem 'dalli'
+gem 'memcachier'
 
 
 gem 'capybara'
