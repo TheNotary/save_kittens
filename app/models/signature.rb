@@ -4,8 +4,8 @@ class Signature < ActiveRecord::Base
   validates :zip, presence: true
 
   before_save :setup_state
-
   after_save :cache_signature_data_and_server
+  after_destroy :invalidate_cache
 
   def setup_state
     self.state = self.zip.to_region(state:true) if state.nil?
@@ -14,13 +14,24 @@ class Signature < ActiveRecord::Base
   # after a new signature is created, publish fresh data to the clients
   # and also set the cache value that /fresh_data is based upon
   def cache_signature_data_and_server
-    Rails.cache.write('topThreeStates', self.class.top_three_states)
+    invalidate_cache
+    Rails.cache.write('topThreeStates', self.class.top_three_states, expires_in: 10.minutes)
+    Rails.cache.write('signatureCount', self.class.count, expires_in: 10.minutes)
     update_clients
   end
 
+  def invalidate_cache
+    Rails.cache.write('topThreeStates', nil)
+    Rails.cache.write('signatureCount', nil)
+  end
+
   def self.to_json
-    { signatureCount: self.count,
+    { signatureCount: self.cached_count,
       topThreeStates: self.top_three_states }.to_json
+  end
+
+  def self.cached_count
+    Rails.cache.read('signatureCount') or self.count
   end
 
   # sends a signal to all clients indcating Signature.count and the
