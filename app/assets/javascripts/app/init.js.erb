@@ -1,7 +1,7 @@
 window.APP = {
+  // A call to this method is made from the body in the html to help turbolinks
   pageChanged: function() {
-    //if (window.APP.currentPage != undefined)
-      this.initPageSpecificJavascript();
+    this.initPageSpecificJavascript();
   },
   initPageSpecificJavascript: function(){
     window.APP.intervals.forEach(function(interval){
@@ -16,11 +16,8 @@ window.APP = {
     else
         APP.currentPage = {};  // need something defined so we know the app loaded once
   },
-  intervals: []
+  intervals: [],
+  fayeHelper: {},
+  pages: {},
+  fayeClient: undefined
 };
-
-window.APP.pages = {};
-
-$(document).ready(function() {
-  //APP.initPageSpecificJavascript();
-});

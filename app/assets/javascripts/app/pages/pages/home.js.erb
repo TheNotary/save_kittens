@@ -4,7 +4,11 @@ window.APP.pages = window.APP.pages || {};
 window.APP.pages[<%= page_id %>] = function() {
 
 	$(document).ready(function() {
+
     window.pageUI = new PageUI(gon.signatureCount, gon.topThreeStates);
+
+
+
     pageUI.init();
   });
 };
@@ -20,10 +24,11 @@ var PageUI = function (signatureCount, topThreeStates) {
     var data = { signatureCount: this.lastSignatureCount,
                  topThreeStates: this.topThreeStates };
 
+		APP.fayeHelper.changeChannel('/save_kittens/fresh_data', this.updateGuiWithData);
 
-    updateGuiWithData(data);
+    this.updateGuiWithData(data);
 
-    this.beginPollingForData();
+    // this.beginPollingForData();
   };
 
   this.beginPollingForData = function() {
@@ -35,16 +40,17 @@ var PageUI = function (signatureCount, topThreeStates) {
 
   // request data from /data/fresh_data and update DOM
   this.checkForNewData = function() {
+		var klass = this;
     $.ajax({url: "/data/fresh_data", success: function(result){
       if (result.signatureCount != pageUI.lastSignatureCount) {
-        // console.log("UI update needed.  Last sig Count: " + pageUI.lastSignatureCount + "\n data: " + result.signatureCount);
         pageUI.lastSignatureCount = parseInt(result.signatureCount);
-        updateGuiWithData(result);
+        klass.updateGuiWithData(result);
       }
     }});
   };
 
-  var updateGuiWithData = function(data) {
+	// data: {"signatureCount":54,"topThreeStates":["CA"]}
+  this.updateGuiWithData = function(data) {
     tailorSigCount(data);
     tailorTopStates(data);
   };

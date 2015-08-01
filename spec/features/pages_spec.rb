@@ -53,9 +53,12 @@ RSpec.feature "Pages", :type => :feature do
     visit "/"
     expect(page).to have_content "We've had 0 signatures so far. Be the first!"
 
+    $FINAL_LAP = true
+
     FactoryGirl.create(:signature, zip: "90210")
 
-    # the webdriver automatically waits for the next javascript intervals to tick???
+
+    # the webdriver automatically waits for any outstanding javascript intervals to tick???
     #sleep 3
     expect(page).not_to have_content "Be the first!"
     expect(page).to have_content "We've had 1 signature so far."

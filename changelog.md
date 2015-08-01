@@ -31,6 +31,10 @@ Currently:
   - Learn node.js or express node, and replace 2 second polling with websocket
     connections
 
+    > Make a connection to the faye server from the client that console logs all
+
+    > Make server spam the faye channel
+
 
 Finished:
   - Added deflator middleware to get a cleaner chrome audit

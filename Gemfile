@@ -7,6 +7,7 @@ gem 'sqlite3'
 gem 'devise'
 gem 'area'
 gem 'gon'
+gem 'faye'
 
 
 gem 'haml-rails'
@@ -19,6 +20,7 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-jquery-ujs'
   gem 'rails-assets-jquery-validation'
+  gem 'rails-assets-faye'
 end
 
 

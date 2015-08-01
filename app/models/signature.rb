@@ -17,7 +17,7 @@ class Signature < ActiveRecord::Base
     invalidate_cache
     Rails.cache.write("topThreeStates", self.class.top_three_states, expires_in: 10.minutes)
     Rails.cache.write("signatureCount", self.class.count, expires_in: 10.minutes)
-    update_clients
+    self.class.update_clients
   end
 
   def invalidate_cache
@@ -26,9 +26,9 @@ class Signature < ActiveRecord::Base
   end
 
   # json api
-  def self.to_json
+  def self.fresh_data
     { signatureCount: self.cached_count,
-      topThreeStates: self.top_three_states }.to_json
+      topThreeStates: self.top_three_states }
   end
 
   # json api
@@ -46,11 +46,14 @@ class Signature < ActiveRecord::Base
     Rails.cache.read("signatureCount") or self.count
   end
 
-  # sends a signal to all clients indcating Signature.count and the
-  # top_three_states
-  def update_clients
-    # TODO: Implement me
+  # sends a message to all clients indcating the
+  # Signature.count and the top_three_states
+  def self.update_clients
+    unless (Rails.env == "test" and Capybara.current_driver != Capybara.javascript_driver)
+      DataCube.push_fresh_data(Signature.fresh_data)
+    end
   end
+
 
   # Efficiently grabs top three states for ajaxing or what have you
   # and utilizes caching since there's polling going on which really adds up

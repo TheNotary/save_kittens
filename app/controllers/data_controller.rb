@@ -1,6 +1,6 @@
 class DataController < ApplicationController
   def fresh_data
-    render json: Signature.to_json
+    render json: Signature.fresh_data
   end
 
   def signatures_by_day_this_week

@@ -1,0 +1,28 @@
+window.APP.fayeHelper = {
+  initFayeClient: function() {
+    var client = new Faye.Client('http://localhost:8000/faye');
+    client.subscriptions = [];
+    window.APP.fayeClient = client;
+  },
+  newSubscription: function(channel, messageProcessingCallback) {
+    var subscription = APP.fayeClient.subscribe(channel, function(message) {
+      // handle message
+      // message: {"signatureCount":54,"topThreeStates":["CA"]}
+      messageProcessingCallback(message)
+      //console.log(message);
+    });
+
+    APP.fayeClient.subscriptions.push(subscription);
+  },
+  changeChannel: function(channel, messageProcessingCallback) {
+    if (APP.fayeClient.subscriptions.length > 0)
+      for (var i = 0; i < fayeClient.length; i++)
+        APP.fayeClient.subscriptions[i].cancel();
+
+    APP.fayeClient.subscriptions = [];
+
+    APP.fayeHelper.newSubscription(channel, messageProcessingCallback);
+  }
+};
+
+APP.fayeHelper.initFayeClient();
