@@ -953,7 +953,7 @@ a:hover {
   width: 54px;
   height: 54px;
   background-color: black;
-  background-image: url('social-icons.png', image);
+  background-image: image-url("social-icons.png");
 }
 
 #share-buttons .sicon {
