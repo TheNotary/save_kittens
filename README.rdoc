@@ -26,3 +26,9 @@ On first boot, the app will run the initializers/populate_database.rb code to ma
 The default admin username is admin@eff.org, the password is exposed as the ENV var CATS_ADMIN_PASSWORD via /root/.rails_secrets
 
 Before deploying, please do a spell check sweep and run the tests with `rake`
+
+
+== Testing
+
+Tests run faster with fayecom running (they need to wait for a timeout otherwise)
+

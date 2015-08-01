@@ -28,13 +28,15 @@ STUFF OF VERY HIGH IMPORTANCE:
 
 Currently:
 
-  - Learn node.js or express node, and replace 2 second polling with websocket
-    connections
+  - replace polling with websocket notification pushing
+    > Lol, running the tests allows faye to comunicate with the dev/production
+      html clients...
 
-    > Make a connection to the faye server from the client that console logs all
 
-    > Make server spam the faye channel
+  - For keeping nodejs servers running:
+    http://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/
 
+    
 
 Finished:
   - Added deflator middleware to get a cleaner chrome audit

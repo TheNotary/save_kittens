@@ -6,10 +6,8 @@ window.APP.pages[<%= page_id %>] = function() {
 	$(document).ready(function() {
 
     window.pageUI = new PageUI(gon.signatureCount, gon.topThreeStates);
-
-
-
     pageUI.init();
+    return pageUI;
   });
 };
 
@@ -24,19 +22,22 @@ var PageUI = function (signatureCount, topThreeStates) {
     var data = { signatureCount: this.lastSignatureCount,
                  topThreeStates: this.topThreeStates };
 
-		APP.fayeHelper.changeChannel('/save_kittens/fresh_data', this.updateGuiWithData);
+	  this.updateGuiWithData(data);
 
-    this.updateGuiWithData(data);
-
-    // this.beginPollingForData();
+		APP.fayeHelper.changeChannel('/save_kittens/data/fresh_data', this.updateGuiWithData);
+		this.enablePollingForData();  // gets disabled when faye comes online
   };
 
-  this.beginPollingForData = function() {
+  this.enablePollingForData = function() {
     var interval = setInterval(function(){
       pageUI.checkForNewData();
     }, 2000);
-    window.APP.intervals.push(interval);
+    window.APP.intervals["pollingFreshData"] = interval;
   };
+
+	this.disablePollingForData = function() {
+		window.APP.intervals.ClearAll();
+	};
 
   // request data from /data/fresh_data and update DOM
   this.checkForNewData = function() {

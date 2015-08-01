@@ -49,6 +49,7 @@ class Signature < ActiveRecord::Base
   # sends a message to all clients indcating the
   # Signature.count and the top_three_states
   def self.update_clients
+    # only allow full :js tests to use the websockets
     unless (Rails.env == "test" and Capybara.current_driver != Capybara.javascript_driver)
       DataCube.push_fresh_data(Signature.fresh_data)
     end

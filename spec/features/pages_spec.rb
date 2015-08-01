@@ -53,8 +53,6 @@ RSpec.feature "Pages", :type => :feature do
     visit "/"
     expect(page).to have_content "We've had 0 signatures so far. Be the first!"
 
-    $FINAL_LAP = true
-
     FactoryGirl.create(:signature, zip: "90210")
 
 

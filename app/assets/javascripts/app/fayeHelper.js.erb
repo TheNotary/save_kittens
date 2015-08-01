@@ -1,18 +1,27 @@
 window.APP.fayeHelper = {
   initFayeClient: function() {
-    var client = new Faye.Client('http://localhost:8000/faye');
+    var client = new Faye.Client('http://localhost:8000/faye').on('transport:up', function() {
+      // the client is online, disable polling...
+      window.APP.intervals.ClearAll();
+    });
     client.subscriptions = [];
+
     window.APP.fayeClient = client;
   },
   newSubscription: function(channel, messageProcessingCallback) {
-    var subscription = APP.fayeClient.subscribe(channel, function(message) {
-      // handle message
-      // message: {"signatureCount":54,"topThreeStates":["CA"]}
-      messageProcessingCallback(message)
-      //console.log(message);
-    });
 
-    APP.fayeClient.subscriptions.push(subscription);
+    try {
+      var subscription = APP.fayeClient.subscribe(channel, function(message) {
+        // message: {"signatureCount":54,"topThreeStates":["CA"]}
+        messageProcessingCallback(message)
+      });
+
+      APP.fayeClient.subscriptions.push(subscription);
+    }
+    catch (err) {
+      console.log(xinspect(err));
+    }
+
   },
   changeChannel: function(channel, messageProcessingCallback) {
     if (APP.fayeClient.subscriptions.length > 0)
