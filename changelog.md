@@ -23,36 +23,20 @@ STUFF OF VERY HIGH IMPORTANCE:
   - Just using a pre-existing theme indicates you can't roll your own stuff
     - Handle the thank_you as a modal
     - Signing should be an ajax function
+      > but do it in a manor that can't be attacked with xs stuff
 
-  - Show off by using websockets instead of polling =D
 
-  - Implement admin interface at /signatures !
-    > Pop in devise for logins!!!  
-    > Make a heat map that indicates activity across the states/ cities?
-    > Show statistics like "lumps of registrations" on a timeline
-    > Make certain things are fancy and show off my CSS skills properly
+Currently:
 
   - Learn node.js or express node, and replace 2 second polling with websocket
     connections
 
-Currently:
-
-
-  - Add tests that admin can log in....
-
-  - create the /admin page
-    > HEAT map
-    http://www.patrick-wied.at/static/heatmapjs/
-
-    > See a cool timeline of when people signed
-    https://github.com/loule/js-chart-widgets/
-
-
-  - BUG:  cached count showing 9, but count showing 1 following... a delete_all ??
-
 
 Finished:
-  - Added really good selenium driver tests to capture all possible states of pluralization
+  - Added deflator middleware to get a cleaner chrome audit
+  - Completed cool graph indicating when signers showed up
+    https://github.com/loule/js-chart-widgets/
+  - Added really good selenium driver tests to capture all possible states of pluralization and admin login
   - BUG: when going from thank_you to / the javascript wasn't re-initializing...
   - implement page-specific javascript
   - Started admin page
