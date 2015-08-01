@@ -18,7 +18,7 @@ window.APP = {
     ClearAll: function(){
       var ints = window.APP.intervals;
       for(interval in ints){
-        if (interval == "clearAll")
+        if (interval == getThisFunctionsName(this))
           continue;
         clearInterval(ints[interval]);
         delete ints[interval];
@@ -29,3 +29,14 @@ window.APP = {
   pages: {},
   fayeClient: undefined
 };
+
+
+
+// when you're in an anonymous function that's been assigned to
+// an object hash, this function returns the string of the key name of the function
+// eg var myObj = { a: function(){ return getThisFunctionsName(this)}} returns "a"
+function getThisFunctionsName(object) {
+  for(p in object){
+    return p;
+  }
+}

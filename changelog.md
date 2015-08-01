@@ -33,10 +33,8 @@ Currently:
       html clients...
 
 
-  - For keeping nodejs servers running:
-    http://blog.nodejitsu.com/keep-a-nodejs-server-up-with-forever/
+  - There's a nasty memoryleak... possibly has to do with the chart on admin page
 
-    
 
 Finished:
   - Added deflator middleware to get a cleaner chrome audit
