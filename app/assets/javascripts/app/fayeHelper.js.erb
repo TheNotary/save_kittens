@@ -1,12 +1,13 @@
 window.APP.fayeHelper = {
   initFayeClient: function() {
-    var client = new Faye.Client('http://localhost:8000/faye').on('transport:up', function() {
+    var url = location.protocol + "//" + document.domain + ":8000/faye"; // eg 'http://localhost:8000/faye'
+    var fayeClient = new Faye.Client(url).on('transport:up', function() {
       // the client is online, disable polling...
       window.APP.intervals.ClearAll();
     });
-    client.subscriptions = [];
+    fayeClient.subscriptions = [];
 
-    window.APP.fayeClient = client;
+    window.APP.fayeClient = fayeClient;
   },
   newSubscription: function(channel, messageProcessingCallback) {
 
