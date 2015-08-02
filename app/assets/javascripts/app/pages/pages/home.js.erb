@@ -24,7 +24,8 @@ var PageUI = function (signatureCount, topThreeStates) {
 
 	  this.updateGuiWithData(data);
 
-		APP.fayeHelper.subscriptions.add('/save_kittens/data/fresh_data', this.updateGuiWithData);
+		if (location.hash != "#nofaye") // use '/#nofaye' for disabling faye in tests
+			APP.fayeHelper.subscriptions.add('/save_kittens/data/fresh_data', this.updateGuiWithData);
 		if (!APP.fayeClient.online)
 			this.enablePollingForData();  // gets disabled when faye comes online
   };

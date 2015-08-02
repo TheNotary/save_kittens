@@ -93,3 +93,10 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 =end
 end
+
+
+
+# run this from a :js test to have the app fallback to polling
+def disable_fayecom_in_js(page)
+  page.evaluate_script "APP.fayeClient.disconnect();"
+end

@@ -2,11 +2,16 @@ window.APP.fayeHelper = {
   initFayeClient: function() {
     var port = location.protocol == "http:" ? "8000" : "8001"
     var url = location.protocol + "//" + document.domain + ":" + port + "/faye"; // eg 'http://localhost:8000/faye'
+
     var fayeClient = new Faye.Client(url).on('transport:up', function() {
       // the client is online, disable polling...
       APP.fayeClient.online = true;
       APP.intervals.ClearAll();
+    }).on('transport:down', function() {
+      APP.fayeClient.online = false;
+      pageUI.enablePollingForData();
     });
+
     fayeClient.subscriptions = [];
 
     window.APP.fayeClient = fayeClient;

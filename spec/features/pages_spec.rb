@@ -49,38 +49,50 @@ RSpec.feature "Pages", :type => :feature do
     expect(Signature.count).to eq 1
   end
 
-  scenario "The user starts making more signatures and sees the correct pluralizations", :js => true do
+  scenario "The user starts making more signatures and sees the correct pluralizations via fayecom (ensure node server running)", :js => true do
     visit "/"
-    expect(page).to have_content "We've had 0 signatures so far. Be the first!"
 
-    FactoryGirl.create(:signature, zip: "90210")
+    fayeOnline = page.evaluate_script "APP.fayeClient['online']"
+    expect(fayeOnline).to be true
 
-
-    # the webdriver automatically waits for any outstanding javascript intervals to tick???
-    #sleep 3
-    expect(page).not_to have_content "Be the first!"
-    expect(page).to have_content "We've had 1 signature so far."
-    expect(page).to have_content "The top 1 most committed state is..."
-    expect(page).to have_content "CA"
-
-    FactoryGirl.create(:signature, zip: "90210")
-    expect(page).to have_content "We've had 2 signatures so far."
-    expect(page).to have_content "The top 1 most committed state is..."
-
-    FactoryGirl.create(:signature, zip: "55331")
-    expect(page).to have_content "We've had 3 signatures so far."
-    expect(page).to have_content "The top 2 most committed states are..."
-    expect(page).to have_content "MN"
-
-    FactoryGirl.create(:signature, zip: "60653")
-    expect(page).to have_content "We've had 4 signatures so far."
-    expect(page).to have_content "The top 3 most committed states are..."
-    expect(page).to have_content "MN"
-    expect(page).to have_content "CA"
-    expect(page).to have_content "IL"
-
-
-
+    run_iterative_pluralization_tests
   end
 
+  scenario "The user starts making more signatures and sees the correct pluralizations via polling", :js => true do
+    visit "/#nofaye"
+    fayeOnline = page.evaluate_script "APP.fayeClient['online']"
+    expect(fayeOnline).to eq nil
+    run_iterative_pluralization_tests
+  end
+
+end
+
+# visit "/" before running this method
+def run_iterative_pluralization_tests
+  expect(page).to have_content "We've had 0 signatures so far. Be the first!"
+
+  FactoryGirl.create(:signature, zip: "90210")
+
+  # the webdriver automatically waits for any outstanding javascript intervals to tick???
+  #sleep 3
+  expect(page).not_to have_content "Be the first!"
+  expect(page).to have_content "We've had 1 signature so far."
+  expect(page).to have_content "The top 1 most committed state is..."
+  expect(page).to have_content "CA"
+
+  FactoryGirl.create(:signature, zip: "90210")
+  expect(page).to have_content "We've had 2 signatures so far."
+  expect(page).to have_content "The top 1 most committed state is..."
+
+  FactoryGirl.create(:signature, zip: "55331")
+  expect(page).to have_content "We've had 3 signatures so far."
+  expect(page).to have_content "The top 2 most committed states are..."
+  expect(page).to have_content "MN"
+
+  FactoryGirl.create(:signature, zip: "60653")
+  expect(page).to have_content "We've had 4 signatures so far."
+  expect(page).to have_content "The top 3 most committed states are..."
+  expect(page).to have_content "MN"
+  expect(page).to have_content "CA"
+  expect(page).to have_content "IL"
 end
