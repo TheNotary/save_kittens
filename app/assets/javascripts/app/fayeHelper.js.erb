@@ -1,37 +1,39 @@
 window.APP.fayeHelper = {
   initFayeClient: function() {
-    var url = location.protocol + "//" + document.domain + ":8000/faye"; // eg 'http://localhost:8000/faye'
+    var port = location.protocol == "http:" ? "8000" : "8001"
+    var url = location.protocol + "//" + document.domain + ":" + port + "/faye"; // eg 'http://localhost:8000/faye'
     var fayeClient = new Faye.Client(url).on('transport:up', function() {
       // the client is online, disable polling...
-      window.APP.intervals.ClearAll();
+      APP.fayeClient.online = true;
+      APP.intervals.ClearAll();
     });
     fayeClient.subscriptions = [];
 
     window.APP.fayeClient = fayeClient;
   },
-  newSubscription: function(channel, messageProcessingCallback) {
+  subscriptions: {
+    clearAll: function(){
+      throw "not implemented";
+    },
+    add: function(channel, messageProcessingCallback){
+      if ( !APP.fayeHelper.subscriptions.doesSubscriptionAlreadyExist(channel) ){
+        var subscription = APP.fayeClient.subscribe(channel, function(message) {
+          // message: {"signatureCount":54,"topThreeStates":["CA"]}
+          messageProcessingCallback(message)
+        });
 
-    try {
-      var subscription = APP.fayeClient.subscribe(channel, function(message) {
-        // message: {"signatureCount":54,"topThreeStates":["CA"]}
-        messageProcessingCallback(message)
-      });
-
-      APP.fayeClient.subscriptions.push(subscription);
-    }
-    catch (err) {
-      console.log(xinspect(err));
-    }
-
-  },
-  changeChannel: function(channel, messageProcessingCallback) {
-    if (APP.fayeClient.subscriptions.length > 0)
-      for (var i = 0; i < fayeClient.length; i++)
-        APP.fayeClient.subscriptions[i].cancel();
-
-    APP.fayeClient.subscriptions = [];
-
-    APP.fayeHelper.newSubscription(channel, messageProcessingCallback);
+        APP.fayeHelper.subscriptions.collection.push(subscription);
+        return subscription;
+      }
+    },
+    doesSubscriptionAlreadyExist: function(channel){
+      for (subscription in APP.fayeHelper.subscriptions.collection){
+        if (subscription._channels == channel)
+          return true;
+      return false;
+      }
+    },
+    collection: []
   }
 };
 

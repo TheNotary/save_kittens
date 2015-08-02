@@ -32,10 +32,11 @@ Currently:
     > Lol, running the tests allows faye to comunicate with the dev/production
       html clients...
 
-  - There's a nasty memoryleak... possibly has to do with the chart on admin page
+  - double check that chart thing, it may be misconfigured
 
 
 Finished:
+  - BugFix: Faye was getting odd when deleting subscriptions, subs are now permanent
   - Got faye working with ssl
   - Added deflator middleware to get a cleaner chrome audit
   - Completed cool graph indicating when signers showed up

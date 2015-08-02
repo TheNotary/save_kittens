@@ -24,8 +24,9 @@ var PageUI = function (signatureCount, topThreeStates) {
 
 	  this.updateGuiWithData(data);
 
-		APP.fayeHelper.changeChannel('/save_kittens/data/fresh_data', this.updateGuiWithData);
-		this.enablePollingForData();  // gets disabled when faye comes online
+		APP.fayeHelper.subscriptions.add('/save_kittens/data/fresh_data', this.updateGuiWithData);
+		if (!APP.fayeClient.online)
+			this.enablePollingForData();  // gets disabled when faye comes online
   };
 
   this.enablePollingForData = function() {
