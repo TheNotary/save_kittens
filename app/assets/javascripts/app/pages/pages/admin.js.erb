@@ -5,16 +5,7 @@ window.APP.pages[<%= page_id %>] = function() {
 
 	$(document).ready(function() {
 
-    var sampleData = [
-        { Day:'Tuesday', Keith:25, Erica:25, George: 30},
-        { Day:'Wednesday', Keith:30, Erica:20, George: 25},
-        { Day:'Thursday', Keith:35, Erica:25, George: 45},
-        { Day:'Friday', Keith:20, Erica:20, George: 25},
-        { Day:'Saturday', Keith:30, Erica:20, George: 30},
-        { Day:'Sunday', Keith:60, Erica:45, George: 90}
-    ];
-
-    sampleData = gon.signaturesByDayThisWeek;
+    var sampleData = gon.signaturesByDayThisWeek;
 
     // prepare jqxChart settings
     var chartSettings = {
