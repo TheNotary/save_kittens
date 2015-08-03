@@ -83,8 +83,12 @@ class Signature < ActiveRecord::Base
   end
 
   def self.growth_today
-    return "N/A (calculation requires yesterday to have signatures)"
-    (self.today.count - self.yesterday.count) / self.yesterday.count * 100
+    return "N/A (calculation requires yesterday to have signatures)" if self.yesterday.count == 0
+    plus_sign = today.count >= yesterday.count ? "+" : ""
+    growth_decimal = (today.count - yesterday.count) / yesterday.count
+    percent_text = plus_sign + (growth_decimal * 100).to_s + "%"
+    element_class = plus_sign.empty? ? "decline" : "growth"
+    "<span class='#{element_class}'>#{percent_text}</span>".html_safe
   end
 
 

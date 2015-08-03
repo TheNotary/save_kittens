@@ -25,6 +25,9 @@ STUFF OF VERY HIGH IMPORTANCE:
     - Signing should be an ajax function
       > but do it in a manor that can't be attacked with xs stuff
 
+  - Pull out the faye javascript into a bower package mated with fayecom
+    > fayecom-client
+
 
 Currently:
 
@@ -33,8 +36,8 @@ Currently:
       html clients...
 
   - double check that chart thing, it may be misconfigured
-  
 
+  - growth rate calculation not working
 
 Finished:
   - BugFix: Faye was getting odd when deleting subscriptions, subs are now permanent
