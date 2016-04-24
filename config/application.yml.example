@@ -1,0 +1,16 @@
+# Add configuration values here, as shown below.
+#
+
+SECRET_KEY_BASE: "b5ccd5e1f41db78c779ef4ad6b85da75a2664d6469bc1c91f30c3671b43e93b09ccd37236dfe8f6645460550d382abcc39b7c7984fddc26e2a3c64272c79dcc6"
+
+# this is the admin password when populate_database is invoked
+CATS_ADMIN_PASSWORD: "password"    
+
+# this is the auth token to connect with the faye sub/pub server
+# There isn't any error notice if you get this wrong...
+SAVE_KITTENS_FAYE_TOKEN: "SAVE_KITTENS_FAYE_TOKEN"
+
+
+# production:
+#   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
+#   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU

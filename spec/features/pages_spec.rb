@@ -54,6 +54,7 @@ RSpec.feature "Pages", :type => :feature do
     visit "/"
 
     fayeOnline = page.evaluate_script "APP.fayeClient['online']"
+
     expect(fayeOnline).to be true
 
     run_iterative_pluralization_tests
