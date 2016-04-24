@@ -45,3 +45,9 @@ gem 'poltergeist'
 gem 'selenium-webdriver'
 gem 'rspec-rails'
 gem 'factory_girl_rails'
+
+group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
