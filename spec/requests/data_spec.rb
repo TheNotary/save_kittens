@@ -2,7 +2,9 @@ require 'spec_helper'
 
 describe "Pages" do
 
-  
+  before :each do
+    Signature.invalidate_cache
+  end
 
   describe "GET /data/fresh_data" do
 

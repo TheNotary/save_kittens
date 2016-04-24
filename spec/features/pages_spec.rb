@@ -4,6 +4,7 @@ RSpec.feature "Pages", :type => :feature do
   before :each do
     Capybara.default_driver = :selenium
     populate_database
+    Signature.invalidate_cache
   end
 
   scenario "The admin can login to the admin page", :js => true do
@@ -11,7 +12,7 @@ RSpec.feature "Pages", :type => :feature do
     click_link "Login"
 
     fill_in "user_email", with: "admin@eff.org"
-    fill_in "user_password", with: "#{ENV["CATS_ADMIN_PASSWORD"]}"
+    fill_in "user_password", with: "password"
     click_button "Log in"
     expect(page).to have_content("Signed in successfully.")
 

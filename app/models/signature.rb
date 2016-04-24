@@ -21,6 +21,10 @@ class Signature < ActiveRecord::Base
   end
 
   def invalidate_cache
+    Signature.invalidate_cache
+  end
+
+  def self.invalidate_cache
     Rails.cache.write("topThreeStates", nil)
     Rails.cache.write("signatureCount", nil)
   end
