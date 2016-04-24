@@ -1,7 +1,11 @@
 window.APP.fayeHelper = {
   initFayeClient: function() {
-    var port = location.protocol == "http:" ? "8000" : "8001"
-    var url = location.protocol + "//" + document.domain + ":" + port + "/faye"; // eg 'http://localhost:8000/faye'
+    var fayecom_address = document.getElementsByName('fayecom_address')[0].getAttribute("content")
+    var httpPort = document.getElementsByName('fayecom_http_port')[0].getAttribute("content");
+    var httpsPort = document.getElementsByName('fayecom_https_port')[0].getAttribute("content");
+
+    var port = location.protocol == "http:" ? httpPort : httpsPort
+    var url = location.protocol + "//" + fayecom_address + ":" + port + "/faye"; // eg 'http://localhost:8000/faye'
 
     var fayeClient = new Faye.Client(url).on('transport:up', function() {
       // the client is online, disable polling...
