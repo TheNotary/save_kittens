@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.1.12'
 gem 'thin'
-gem 'sqlite3'
 
 gem 'figaro'
 gem 'devise'
@@ -10,6 +9,8 @@ gem 'area'
 gem 'gon'
 gem 'faye'
 
+gem 'dalli'
+gem 'memcachier'
 
 gem 'haml-rails'
 gem 'sass-rails', '~> 4.0.3'
@@ -25,26 +26,27 @@ source 'https://rails-assets.org' do
 end
 
 
-
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
-gem 'pry', group: :development
-gem 'better_errors'
-gem "binding_of_caller"
-gem 'spring',        group: :development
-gem 'dalli'
-gem 'memcachier'
+group :development, :test do
+  gem 'pry'
+  gem 'better_errors'
+  gem "binding_of_caller"
+  gem 'spring'
+  gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'database_cleaner'
+  gem 'factory_girl_rails'
+end
 
-
-gem 'database_cleaner'
-gem 'capybara'
-gem 'poltergeist'
-gem 'selenium-webdriver'
-gem 'rspec-rails'
-gem 'factory_girl_rails'
+group :test do
+  gem 'capybara'
+  gem 'poltergeist'
+  gem 'selenium-webdriver'
+end
 
 group :production do
   gem 'pg'
