@@ -3,7 +3,7 @@ def populate_database
     if Rails.env == "test"
       FactoryGirl.create(:admin_user)
     else
-      User.create(email: "admin@eff.org", password: ENV["CATS_ADMIN_PASSWORD"], admin: true)
+      User.create(email: ENV["admin_email"], password: ENV["admin_password"], admin: true)
     end
   end
 end

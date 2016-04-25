@@ -7,6 +7,8 @@ window.APP.fayeHelper = {
     var port = location.protocol == "http:" ? httpPort : httpsPort
     var url = location.protocol + "//" + fayecom_address + ":" + port + "/faye"; // eg 'http://localhost:8000/faye'
 
+    console.log("about to try a connection to fayecom at " + url);
+
     var fayeClient = new Faye.Client(url).on('transport:up', function() {
       // the client is online, disable polling...
       APP.fayeClient.online = true;
