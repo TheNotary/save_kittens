@@ -4,14 +4,17 @@ secret_key_base: "b5ccd5e1f41db78c779ef4ad6b85da75a2664d6469bc1c91f30c3671b43e93
 admin_email: "admin@eff.org"
 admin_password: "password"
 
-# this is the auth token to connect with the faye sub/pub server
-# There isn't any error notice if you get this wrong...
-save_kittens_faye_token: "SAVE_KITTENS_FAYE_TOKEN"
 
-# fayecom Settings
+####################
+# fayecom Settings #
+####################
+
 fayecom_address: '127.0.0.1'
 fayecom_port: '8000'
 fayecom_protocol: 'http'
+
+# this is the auth token to connect with the faye sub/pub server
+faye_auth_token: "SAVE_KITTENS_FAYE_TOKEN"
 
 
 ########################
@@ -19,9 +22,6 @@ fayecom_protocol: 'http'
 ########################
 
 production_base: &production_base
-  fayecom_address: 'fayecom.xref.local'
-  fayecom_port: '443'
-  fayecom_protocol: 'https'
   db_adapter: 'postgresql'
   db_encoding: 'utf8'
   db_database: 'save_kittens_prod'

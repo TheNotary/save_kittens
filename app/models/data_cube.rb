@@ -9,9 +9,10 @@ class DataCube
   end
 
   def self.push_data(channel, msg)
+    message = {:channel => channel, :data => msg, :ext => {:authToken => ENV['faye_auth_token']}}
+    uri = URI.parse(fayecom_url)
+
     begin
-      message = {:channel => channel, :data => msg, :ext => {:authToken => ENV['save_kittens_faye_token']}}
-      uri = URI.parse(fayecom_url)
       Net::HTTP.post_form(uri, message: message.to_json)
     rescue Errno::ECONNREFUSED => e
       puts "ERROR:  Could not send message to Faye server.  Is it offline? #{fayecom_url}"
