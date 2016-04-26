@@ -35,7 +35,7 @@ group :development, :test do
   gem 'pry'
   gem 'better_errors'
   gem "binding_of_caller"
-  gem 'spring'
+  #gem 'spring'
   gem 'sqlite3'
   gem 'rspec-rails'
   gem 'database_cleaner'
