@@ -6,4 +6,8 @@ class DataController < ApplicationController
   def signatures_by_day_this_week
     render json: Signature.by_day_this_week
   end
+
+  def version
+    render text: SaveKittens::Application::VERSION
+  end
 end

@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'data/signatures_by_day_this_week'
   get 'thank_you' => 'pages#thank_you'
 
+  get 'v' => 'data#version'
+
   resources :signatures
 end
 
