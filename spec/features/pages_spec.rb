@@ -53,7 +53,11 @@ RSpec.feature "Pages", :type => :feature do
   scenario "The user starts making more signatures and sees the correct pluralizations via fayecom (ensure node server running)", :js => true do
     visit "/"
 
-    fayeOnline = page.evaluate_script "APP.fayeClient['online']"
+    try_this_many_times = 5
+    until fayeOnline = page.evaluate_script("APP.fayeClient['online']") or try_this_many_times <= 0 do
+      try_this_many_times -= 1
+      sleep 0.1
+    end
 
     expect(fayeOnline).to be true
 
