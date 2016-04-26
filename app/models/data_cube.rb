@@ -4,27 +4,26 @@ class DataCube
     push_data "/save_kittens/data/fresh_data", d
   end
 
+  def self.fayecom_url
+    "#{ENV['fayecom_protocol']}://#{ENV['fayecom_address']}:#{ENV['fayecom_port']}/faye"
+  end
+
   def self.push_data(channel, msg)
     begin
       message = {:channel => channel, :data => msg, :ext => {:authToken => ENV['save_kittens_faye_token']}}
-      uri = URI.parse("http://localhost:8000/faye")
-      Net::HTTP.post_form(uri, :message => message.to_json)
-    rescue # faye server must be offline. Oh well.
+      uri = URI.parse(fayecom_url)
+      Net::HTTP.post_form(uri, message: message.to_json)
+    rescue Errno::ECONNREFUSED => e
+      puts "ERROR:  Could not send message to Faye server.  Is it offline? #{fayecom_url}"
+    rescue OpenSSL::SSL::SSLError => e
+      puts "WARNING:  Not SSL verifying host... this could be a big deal... #{fayecom_url}"
+      OpenSSL::SSL.send(:remove_const, :VERIFY_PEER)
+      OpenSSL::SSL.const_set(:VERIFY_PEER, OpenSSL::SSL::VERIFY_NONE)
+      Net::HTTP.post_form(uri, message: message.to_json)
+    ensure
+      OpenSSL::SSL.send(:remove_const, :VERIFY_PEER)
+      OpenSSL::SSL.const_set(:VERIFY_PEER, 1)
     end
-
-    # begin
-    #   # we're not validating the fayecom with ssl
-    #   prev_setting = OpenSSL::SSL.send(:remove_const, :VERIFY_PEER)
-    #   OpenSSL::SSL.const_set(:VERIFY_PEER, OpenSSL::SSL::VERIFY_NONE)
-    #
-    #   message = {:channel => channel, :data => msg, :ext => {:authToken => ENV['save_kittens_faye_token']}}
-    #   uri = URI.parse("https://localhost:8001/faye")
-    #   Net::HTTP.post_form(uri, :message => message.to_json)
-    # rescue
-    # ensure
-    #   OpenSSL::SSL.send(:remove_const, :VERIFY_PEER)
-    #   OpenSSL::SSL.const_set(:VERIFY_PEER, prev_setting)
-    # end
 
   end
 

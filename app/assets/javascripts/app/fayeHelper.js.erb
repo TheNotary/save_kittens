@@ -1,11 +1,11 @@
 window.APP.fayeHelper = {
   initFayeClient: function() {
     var fayecom_address = document.getElementsByName('fayecom_address')[0].getAttribute("content")
-    var httpPort = document.getElementsByName('fayecom_http_port')[0].getAttribute("content");
-    var httpsPort = document.getElementsByName('fayecom_https_port')[0].getAttribute("content");
+    var fayecom_protocol = document.getElementsByName('fayecom_protocol')[0].getAttribute("content")
+    var fayecomPort = document.getElementsByName('fayecom_port')[0].getAttribute("content");
 
-    var port = location.protocol == "http:" ? httpPort : httpsPort
-    var url = location.protocol + "//" + fayecom_address + ":" + port + "/faye"; // eg 'http://localhost:8000/faye'
+    var port = fayecomPort;
+    var url = fayecom_protocol + "://" + fayecom_address + ":" + port + "/faye"; // eg 'http://localhost:8000/faye'
 
     console.log("about to try a connection to fayecom at " + url);
 
